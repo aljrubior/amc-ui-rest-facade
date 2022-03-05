@@ -1,19 +1,19 @@
-package applicationManagerV1
+package cloudhub
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/requests"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"io/ioutil"
 	"net/http"
 	"time"
 )
 
-func (client DefaultHttpClient) GetAlerts(token, orgId, envId string) (*alerts.AlertsResponse, error) {
+func (client DefaultHttpClient) GetAlerts(token string) (*alerts.AlertsResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetAlertsRequest(&client.config, token, orgId, envId).Build()
+	req := requests.NewGetAlertsRequest(&client.config, token).Build()
 
 	resp, err := httpClient.Do(req)
 

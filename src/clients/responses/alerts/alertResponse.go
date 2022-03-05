@@ -1,4 +1,4 @@
-package responses
+package alerts
 
 type AlertResponse struct {
 	Id             string         `json:"id"`

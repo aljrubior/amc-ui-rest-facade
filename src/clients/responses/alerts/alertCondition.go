@@ -1,4 +1,4 @@
-package responses
+package alerts
 
 type AlertCondition struct {
 	Resources    []string `json:"resources"`

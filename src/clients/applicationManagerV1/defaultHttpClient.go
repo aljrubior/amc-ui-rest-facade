@@ -5,15 +5,15 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 )
 
-func NewDefaultApplicationManagerV1Client(
-	config config.ApplicationManagerV1ConfigClient) DefaultApplicationManagerV1Client {
+func NewDefaultHttpClient(
+	config config.ApplicationManagerV1ConfigClient) DefaultHttpClient {
 
-	return DefaultApplicationManagerV1Client{
+	return DefaultHttpClient{
 		config: config,
 	}
 }
 
-type DefaultApplicationManagerV1Client struct {
+type DefaultHttpClient struct {
 	clients.BaseHttpClient
 	config config.ApplicationManagerV1ConfigClient
 }

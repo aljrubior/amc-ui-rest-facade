@@ -1,4 +1,4 @@
-package responses
+package alerts
 
 type AlertAction struct {
 	Emails  []string `json:"emails"`
