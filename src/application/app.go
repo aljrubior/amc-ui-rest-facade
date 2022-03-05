@@ -29,5 +29,5 @@ func (app *App) Initialize() {
 }
 
 func (app *App) Run(addr string) {
-	log.Fatal(http.ListenAndServe(":8010"))
+	log.Fatal(http.ListenAndServe(":8010", app.Router))
 }
