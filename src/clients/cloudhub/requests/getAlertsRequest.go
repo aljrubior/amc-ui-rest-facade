@@ -40,6 +40,6 @@ func (request *GetAlertsRequest) Build() *http.Request {
 	req, _ := http.NewRequest(http.MethodPost, uri, nil)
 
 	request.AddAuthorizationHeader(req, request.bearerToken)
-	
+
 	return req
 }

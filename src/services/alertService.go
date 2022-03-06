@@ -1,5 +1,5 @@
 package services
 
 type AlertService interface {
-	GetAlerts()
+	GetAlerts(token, orgId, envId string)
 }
