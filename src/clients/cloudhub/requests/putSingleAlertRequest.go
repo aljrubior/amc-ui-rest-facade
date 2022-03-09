@@ -1,38 +1,42 @@
 package requests
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/aljrubior/amc-ui-rest-facade/clients"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 	"net/http"
 )
 
-func NewGetSingleAlertRequest(
+func NewPutSingleAlertRequest(
 	config *config.CloudhubConfigClient,
 	bearerToken,
 	orgId,
 	envId,
-	alertId string) *GetSingleAlertRequest {
+	alertId string,
+	body []byte) *PutSingleAlertRequest {
 
-	return &GetSingleAlertRequest{
+	return &PutSingleAlertRequest{
 		config:      config,
 		bearerToken: bearerToken,
 		orgId:       orgId,
 		envId:       envId,
 		alertId:     alertId,
+		body:        body,
 	}
 }
 
-type GetSingleAlertRequest struct {
+type PutSingleAlertRequest struct {
 	clients.BaseHttpRequest
 	config *config.CloudhubConfigClient
 	bearerToken,
 	orgId,
 	envId,
 	alertId string
+	body []byte
 }
 
-func (t *GetSingleAlertRequest) buildUri() string {
+func (t *PutSingleAlertRequest) buildUri() string {
 
 	protocol := t.config.Protocol
 	host := t.config.Host
@@ -42,13 +46,15 @@ func (t *GetSingleAlertRequest) buildUri() string {
 	return fmt.Sprintf("%s://%s:%s%s", protocol, host, port, path)
 }
 
-func (t *GetSingleAlertRequest) Build() *http.Request {
+func (t *PutSingleAlertRequest) Build() *http.Request {
 
 	uri := t.buildUri()
 
-	req, _ := http.NewRequest(http.MethodGet, uri, nil)
+	req, _ := http.NewRequest(http.MethodPut, uri, bytes.NewBuffer(t.body))
 
 	t.AddDefaultHeaders(req, t.orgId, t.envId, t.bearerToken)
+
+	t.AddContentType(req, clients.ContentTypeJSON)
 
 	return req
 }

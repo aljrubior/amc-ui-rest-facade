@@ -7,14 +7,14 @@ import (
 	"net/http"
 )
 
-func NewGetSingleAlertRequest(
+func NewDeleteSingleAlertRequest(
 	config *config.CloudhubConfigClient,
 	bearerToken,
 	orgId,
 	envId,
-	alertId string) *GetSingleAlertRequest {
+	alertId string) *DeleteSingleAlertRequest {
 
-	return &GetSingleAlertRequest{
+	return &DeleteSingleAlertRequest{
 		config:      config,
 		bearerToken: bearerToken,
 		orgId:       orgId,
@@ -23,7 +23,7 @@ func NewGetSingleAlertRequest(
 	}
 }
 
-type GetSingleAlertRequest struct {
+type DeleteSingleAlertRequest struct {
 	clients.BaseHttpRequest
 	config *config.CloudhubConfigClient
 	bearerToken,
@@ -32,7 +32,7 @@ type GetSingleAlertRequest struct {
 	alertId string
 }
 
-func (t *GetSingleAlertRequest) buildUri() string {
+func (t *DeleteSingleAlertRequest) buildUri() string {
 
 	protocol := t.config.Protocol
 	host := t.config.Host
@@ -42,11 +42,11 @@ func (t *GetSingleAlertRequest) buildUri() string {
 	return fmt.Sprintf("%s://%s:%s%s", protocol, host, port, path)
 }
 
-func (t *GetSingleAlertRequest) Build() *http.Request {
+func (t *DeleteSingleAlertRequest) Build() *http.Request {
 
 	uri := t.buildUri()
 
-	req, _ := http.NewRequest(http.MethodGet, uri, nil)
+	req, _ := http.NewRequest(http.MethodDelete, uri, nil)
 
 	t.AddDefaultHeaders(req, t.orgId, t.envId, t.bearerToken)
 

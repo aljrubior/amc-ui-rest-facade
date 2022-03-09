@@ -37,7 +37,7 @@ func (t *GetAlertsRequest) Build() *http.Request {
 
 	uri := t.buildUri()
 
-	req, _ := http.NewRequest(http.MethodPost, uri, nil)
+	req, _ := http.NewRequest(http.MethodGet, uri, nil)
 
 	t.AddAuthorizationHeader(req, t.bearerToken)
 

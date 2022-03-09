@@ -34,7 +34,7 @@ func (request *GetAlertsRequest) buildUri() string {
 	protocol := request.config.Protocol
 	host := request.config.Host
 	port := request.config.Port
-	path := fmt.Sprintf("%s%s", request.config.Path, request.config.AlertsPath)
+	path := request.config.AlertsPath
 
 	return fmt.Sprintf("%s://%s:%s%s", protocol, host, port, path)
 }
@@ -43,7 +43,7 @@ func (request *GetAlertsRequest) Build() *http.Request {
 
 	uri := request.buildUri()
 
-	req, _ := http.NewRequest(http.MethodPost, uri, nil)
+	req, _ := http.NewRequest(http.MethodGet, uri, nil)
 
 	request.AddDefaultHeaders(req, request.orgId, request.envId, request.bearerToken)
 

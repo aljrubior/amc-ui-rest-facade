@@ -57,3 +57,25 @@ func (t DefaultCloudhubService) PostAlert(token, orgId, envId string, request re
 
 	return &resp.Data, nil
 }
+
+func (t DefaultCloudhubService) UpdateAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+
+	body, err := json.Marshal(request)
+
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := t.httpClient.PutSingleAlert(token, orgId, envId, alertId, body)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}
+
+func (t DefaultCloudhubService) DeleteSingleAlert(token, orgId, envId, alertId string) error {
+
+	return t.httpClient.DeleteSingleAlert(token, orgId, envId, alertId)
+}

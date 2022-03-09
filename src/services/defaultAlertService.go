@@ -53,6 +53,7 @@ func (service DefaultAlertService) PostAlert(token, orgId, envId, product string
 	var alerts []alerts.AlertResponse
 
 	if product == HYBRID_PRODUCT {
+
 		resp, err := service.applicationManagerV1Service.PostAlert(token, orgId, envId, request)
 
 		if err != nil {
@@ -65,6 +66,7 @@ func (service DefaultAlertService) PostAlert(token, orgId, envId, product string
 	}
 
 	if product == CLOUDHUB_PRODUCT {
+
 		resp, err := service.cloudhubService.PostAlert(token, orgId, envId, request)
 
 		if err != nil {
@@ -84,6 +86,7 @@ func (t DefaultAlertService) GetSingleAlert(token, orgId, envId, product, alertI
 	var alerts []alerts.AlertResponse
 
 	if product == HYBRID_PRODUCT {
+
 		resp, err := t.applicationManagerV1Service.GetSingleAlert(token, orgId, envId, alertId)
 
 		if err != nil {
@@ -96,6 +99,7 @@ func (t DefaultAlertService) GetSingleAlert(token, orgId, envId, product, alertI
 	}
 
 	if product == CLOUDHUB_PRODUCT {
+
 		resp, err := t.cloudhubService.GetSingleAlert(token, orgId, envId, alertId)
 
 		if err != nil {
@@ -108,5 +112,52 @@ func (t DefaultAlertService) GetSingleAlert(token, orgId, envId, product, alertI
 	}
 
 	return &alerts, errors.New("//TODO: Implement this")
+}
 
+func (t DefaultAlertService) UpdateAlert(token, orgId, envId, product, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+
+	var alerts []alerts.AlertResponse
+
+	if product == HYBRID_PRODUCT {
+
+		resp, err := t.applicationManagerV1Service.UpdateSingleAlert(token, orgId, envId, alertId, request)
+
+		if err != nil {
+			return nil, err
+		}
+
+		alerts = append(alerts, *resp...)
+
+		return &alerts, err
+	}
+
+	if product == CLOUDHUB_PRODUCT {
+
+		resp, err := t.cloudhubService.UpdateAlert(token, orgId, envId, alertId, request)
+
+		if err != nil {
+			return nil, err
+		}
+
+		alerts = append(alerts, *resp...)
+
+		return &alerts, err
+	}
+
+	return &alerts, errors.New("//TODO: Implement this")
+}
+
+func (t DefaultAlertService) DeleteSingleAlert(token, orgId, envId, product, alertId string) error {
+
+	if product == HYBRID_PRODUCT {
+
+		return t.applicationManagerV1Service.DeleteSingleAlert(token, orgId, envId, alertId)
+	}
+
+	if product == CLOUDHUB_PRODUCT {
+
+		return t.cloudhubService.DeleteSingleAlert(token, orgId, envId, alertId)
+	}
+
+	return errors.New("//TODO: Implement this")
 }

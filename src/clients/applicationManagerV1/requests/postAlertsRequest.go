@@ -33,24 +33,24 @@ type PostAlertRequest struct {
 	body []byte
 }
 
-func (request *PostAlertRequest) buildUri() string {
+func (t *PostAlertRequest) buildUri() string {
 
-	protocol := request.config.Protocol
-	host := request.config.Host
-	port := request.config.Port
-	path := fmt.Sprintf("%s%s", request.config.Path, request.config.AlertsPath)
+	protocol := t.config.Protocol
+	host := t.config.Host
+	port := t.config.Port
+	path := t.config.AlertsPath
 
 	return fmt.Sprintf("%s://%s:%s%s", protocol, host, port, path)
 }
 
-func (request *PostAlertRequest) Build() *http.Request {
+func (t *PostAlertRequest) Build() *http.Request {
 
-	uri := request.buildUri()
+	uri := t.buildUri()
 
-	req, _ := http.NewRequest(http.MethodPost, uri, bytes.NewBuffer(request.body))
+	req, _ := http.NewRequest(http.MethodPost, uri, bytes.NewBuffer(t.body))
 
-	request.AddDefaultHeaders(req, request.orgId, request.envId, request.bearerToken)
-	request.AddContentType(req, clients.ContentTypeJSON)
+	t.AddDefaultHeaders(req, t.orgId, t.envId, t.bearerToken)
+	t.AddContentType(req, clients.ContentTypeJSON)
 
 	return req
 }

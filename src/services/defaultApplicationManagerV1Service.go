@@ -56,3 +56,25 @@ func (service DefaultApplicationManagerV1Service) GetSingleAlert(token, orgId, e
 
 	return &resp.Data, nil
 }
+
+func (service DefaultApplicationManagerV1Service) UpdateSingleAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+
+	body, err := json.Marshal(request)
+
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := service.httpClient.PatchSingleAlert(token, orgId, envId, alertId, body)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}
+
+func (service DefaultApplicationManagerV1Service) DeleteSingleAlert(token, orgId, envId, alertId string) error {
+
+	return service.httpClient.DeleteSingleAlert(token, orgId, envId, alertId)
+}
