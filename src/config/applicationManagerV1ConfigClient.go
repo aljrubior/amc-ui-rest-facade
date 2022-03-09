@@ -7,6 +7,7 @@ func NewApplicationManagerV1ConfigClient() ApplicationManagerV1ConfigClient {
 		Port:       "8080",
 		Path:       "/api/v1",
 		AlertsPath: "/alerts",
+		AlertPath:  "/alerts/%s",
 	}
 }
 
@@ -16,4 +17,5 @@ type ApplicationManagerV1ConfigClient struct {
 	Port,
 	Path,
 	AlertsPath string
+	AlertPath string
 }

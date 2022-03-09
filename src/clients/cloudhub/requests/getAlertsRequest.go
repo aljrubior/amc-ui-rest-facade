@@ -23,23 +23,23 @@ type GetAlertsRequest struct {
 	bearerToken string
 }
 
-func (request *GetAlertsRequest) buildUri() string {
+func (t *GetAlertsRequest) buildUri() string {
 
-	protocol := request.config.Protocol
-	host := request.config.Host
-	port := request.config.Port
-	path := fmt.Sprintf("%s%s", request.config.Path, request.config.AlertsPath)
+	protocol := t.config.Protocol
+	host := t.config.Host
+	port := t.config.Port
+	path := t.config.AlertsPath
 
 	return fmt.Sprintf("%s://%s:%s%s", protocol, host, port, path)
 }
 
-func (request *GetAlertsRequest) Build() *http.Request {
+func (t *GetAlertsRequest) Build() *http.Request {
 
-	uri := request.buildUri()
+	uri := t.buildUri()
 
 	req, _ := http.NewRequest(http.MethodPost, uri, nil)
 
-	request.AddAuthorizationHeader(req, request.bearerToken)
+	t.AddAuthorizationHeader(req, t.bearerToken)
 
 	return req
 }
