@@ -78,3 +78,14 @@ func (service DefaultApplicationManagerV1Service) DeleteSingleAlert(token, orgId
 
 	return service.httpClient.DeleteSingleAlert(token, orgId, envId, alertId)
 }
+
+func (service DefaultApplicationManagerV1Service) GetAlertHistory(token, orgId, envId, alertId string) (*[]alerts.AlertHistoryResponse, error) {
+
+	resp, err := service.httpClient.GetAlertHistory(token, orgId, envId, alertId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}
