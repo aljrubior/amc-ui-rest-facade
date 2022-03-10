@@ -124,3 +124,18 @@ func (t DefaultAlertService) GetAlertHistory(token, orgId, envId, product, alert
 
 	return &alerts, errors.New("//TODO: Implement this")
 }
+
+func (t DefaultAlertService) GetResourceAlertHistory(token, orgId, envId, product, resourceId string) (*[]alerts.ResourceAlertHistory, error) {
+
+	if product == HYBRID_PRODUCT {
+
+		return t.applicationManagerV1Service.GetResourceAlertHistory(token, orgId, envId, resourceId)
+	}
+
+	if product == CLOUDHUB_PRODUCT {
+
+		return nil, errors.New("//TODO: Not Implemented")
+	}
+
+	return nil, errors.New("//TODO: Implement this")
+}
