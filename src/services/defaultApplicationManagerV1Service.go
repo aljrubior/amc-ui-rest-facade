@@ -89,3 +89,14 @@ func (service DefaultApplicationManagerV1Service) GetAlertHistory(token, orgId, 
 
 	return &resp.Data, nil
 }
+
+func (service DefaultApplicationManagerV1Service) GetResourceAlertHistory(token, orgId, envId, alertId string) (*[]alerts.ResourceAlertHistory, error) {
+
+	resp, err := service.httpClient.GetResourceAlertHistory(token, orgId, envId, alertId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}

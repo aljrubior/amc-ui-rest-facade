@@ -11,4 +11,5 @@ type HttpClient interface {
 	PostAlert(token, orgId, envId string, body []byte) (*alerts.AlertsResponse, error)
 	DeleteSingleAlert(token, orgId, envId, alertId string) error
 	GetAlertHistory(token, orgId, envId, alertId string) (*alerts.AlertHistoriesResponse, error)
+	GetResourceAlertHistory(token, orgId, envId, resourceId string) (*alerts.ResourceAlertHistoriesResponse, error)
 }
