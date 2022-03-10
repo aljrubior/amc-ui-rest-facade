@@ -90,7 +90,7 @@ func (t DefaultAlertService) UpdateAlert(token, orgId, envId, product, alertId s
 		return t.cloudhubService.UpdateAlert(token, orgId, envId, alertId, request)
 	}
 
-	return &alerts, errors.New("//TODO: Implement this")
+	return nil, errors.New("//TODO: Implement this")
 }
 
 func (t DefaultAlertService) DeleteSingleAlert(token, orgId, envId, product, alertId string) error {
