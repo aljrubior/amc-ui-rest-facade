@@ -79,3 +79,14 @@ func (t DefaultCloudhubService) DeleteSingleAlert(token, orgId, envId, alertId s
 
 	return t.httpClient.DeleteSingleAlert(token, orgId, envId, alertId)
 }
+
+func (t DefaultCloudhubService) GetAlertHistory(token, orgId, envId, alertId string) (*[]alerts.AlertHistoryResponse, error) {
+
+	resp, err := t.httpClient.GetAlertHistory(token, orgId, envId, alertId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}

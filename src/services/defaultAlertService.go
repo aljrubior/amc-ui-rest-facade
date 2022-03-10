@@ -50,98 +50,44 @@ func (service DefaultAlertService) GetAlerts(token, orgId, envId string) (*[]ale
 
 func (service DefaultAlertService) PostAlert(token, orgId, envId, product string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
 
-	var alerts []alerts.AlertResponse
-
 	if product == HYBRID_PRODUCT {
 
-		resp, err := service.applicationManagerV1Service.PostAlert(token, orgId, envId, request)
-
-		if err != nil {
-			return nil, err
-		}
-
-		alerts = append(alerts, *resp...)
-
-		return &alerts, err
+		return service.applicationManagerV1Service.PostAlert(token, orgId, envId, request)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
 
-		resp, err := service.cloudhubService.PostAlert(token, orgId, envId, request)
-
-		if err != nil {
-			return nil, err
-		}
-
-		alerts = append(alerts, *resp...)
-
-		return &alerts, err
+		return service.cloudhubService.PostAlert(token, orgId, envId, request)
 	}
 
-	return &alerts, errors.New("//TODO: Implement this")
+	return nil, errors.New("//TODO: Implement this")
 }
 
 func (t DefaultAlertService) GetSingleAlert(token, orgId, envId, product, alertId string) (*[]alerts.AlertResponse, error) {
 
-	var alerts []alerts.AlertResponse
-
 	if product == HYBRID_PRODUCT {
 
-		resp, err := t.applicationManagerV1Service.GetSingleAlert(token, orgId, envId, alertId)
-
-		if err != nil {
-			return nil, err
-		}
-
-		alerts = append(alerts, *resp...)
-
-		return &alerts, err
+		return t.applicationManagerV1Service.GetSingleAlert(token, orgId, envId, alertId)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
 
-		resp, err := t.cloudhubService.GetSingleAlert(token, orgId, envId, alertId)
-
-		if err != nil {
-			return nil, err
-		}
-
-		alerts = append(alerts, *resp...)
-
-		return &alerts, err
+		return t.cloudhubService.GetSingleAlert(token, orgId, envId, alertId)
 	}
 
-	return &alerts, errors.New("//TODO: Implement this")
+	return nil, errors.New("//TODO: Implement this")
 }
 
 func (t DefaultAlertService) UpdateAlert(token, orgId, envId, product, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
 
-	var alerts []alerts.AlertResponse
-
 	if product == HYBRID_PRODUCT {
 
-		resp, err := t.applicationManagerV1Service.UpdateSingleAlert(token, orgId, envId, alertId, request)
-
-		if err != nil {
-			return nil, err
-		}
-
-		alerts = append(alerts, *resp...)
-
-		return &alerts, err
+		return t.applicationManagerV1Service.UpdateSingleAlert(token, orgId, envId, alertId, request)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
 
-		resp, err := t.cloudhubService.UpdateAlert(token, orgId, envId, alertId, request)
-
-		if err != nil {
-			return nil, err
-		}
-
-		alerts = append(alerts, *resp...)
-
-		return &alerts, err
+		return t.cloudhubService.UpdateAlert(token, orgId, envId, alertId, request)
 	}
 
 	return &alerts, errors.New("//TODO: Implement this")
@@ -160,4 +106,21 @@ func (t DefaultAlertService) DeleteSingleAlert(token, orgId, envId, product, ale
 	}
 
 	return errors.New("//TODO: Implement this")
+}
+
+func (t DefaultAlertService) GetAlertHistory(token, orgId, envId, product, alertId string) (*[]alerts.AlertHistoryResponse, error) {
+
+	var alerts []alerts.AlertHistoryResponse
+
+	if product == HYBRID_PRODUCT {
+
+		return t.applicationManagerV1Service.GetAlertHistory(token, orgId, envId, alertId)
+	}
+
+	if product == CLOUDHUB_PRODUCT {
+
+		return t.cloudhubService.GetAlertHistory(token, orgId, envId, alertId)
+	}
+
+	return &alerts, errors.New("//TODO: Implement this")
 }

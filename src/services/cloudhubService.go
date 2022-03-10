@@ -11,4 +11,5 @@ type CloudhubService interface {
 	UpdateAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error)
 	PostAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error)
 	DeleteSingleAlert(token, orgId, envId, alertId string) error
+	GetAlertHistory(token, orgId, envId, alertId string) (*[]alerts.AlertHistoryResponse, error)
 }
