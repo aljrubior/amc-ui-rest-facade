@@ -1,6 +1,6 @@
 package responses
 
-type Application struct {
+type ApplicationResponse struct {
 	VersionId                         string            `json:"versionId"`
 	Domain                            string            `json:"domain"`
 	FullDomain                        string            `json:"fullDomain"`

@@ -3,6 +3,7 @@ package services
 import (
 	"encoding/json"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
 )
@@ -89,4 +90,15 @@ func (t DefaultCloudhubService) GetAlertHistory(token, orgId, envId, alertId str
 	}
 
 	return &resp.Data, nil
+}
+
+func (t DefaultCloudhubService) GetApplications(token string) (*[]responses.ApplicationResponse, error) {
+
+	resp, err := t.httpClient.GetApplications(token)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return resp, nil
 }

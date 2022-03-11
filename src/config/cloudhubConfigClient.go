@@ -8,6 +8,7 @@ func NewCloudhubConfigClient() CloudhubConfigClient {
 		AlertsPath:       "/api/v2/alerts",
 		AlertPath:        "/api/v2/alerts/%s",
 		AlertHistoryPath: "/api/v2/alerts/%s/history",
+		ApplicationsPath: "/api/v2/applications",
 	}
 }
 
@@ -17,5 +18,6 @@ type CloudhubConfigClient struct {
 	Port,
 	AlertsPath,
 	AlertPath,
-	AlertHistoryPath string
+	AlertHistoryPath,
+	ApplicationsPath string
 }
