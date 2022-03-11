@@ -13,7 +13,7 @@ func (client DefaultHttpClient) GetApplications(token string) (*[]responses.Appl
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetApplications(&client.config, token).Build()
+	req := requests.NewGetApplicationsRequest(&client.config, token).Build()
 
 	resp, err := httpClient.Do(req)
 

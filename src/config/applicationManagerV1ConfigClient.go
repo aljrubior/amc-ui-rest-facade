@@ -9,6 +9,7 @@ func NewApplicationManagerV1ConfigClient() ApplicationManagerV1ConfigClient {
 		AlertPath:                "/api/v1/alerts/%s",
 		AlertHistoryPath:         "/api/v1/alerts/%s/history",
 		ResourceAlertHistoryPath: "/api/v1/alerts/resource/%s/history",
+		ApplicationsPath:         "/api/v1/alerts/resource/%s/history",
 	}
 }
 
@@ -19,5 +20,6 @@ type ApplicationManagerV1ConfigClient struct {
 	AlertsPath,
 	AlertPath,
 	AlertHistoryPath,
-	ResourceAlertHistoryPath string
+	ResourceAlertHistoryPath,
+	ApplicationsPath string
 }

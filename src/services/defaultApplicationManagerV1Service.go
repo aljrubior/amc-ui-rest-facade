@@ -3,6 +3,7 @@ package services
 import (
 	"encoding/json"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
 )
@@ -93,6 +94,17 @@ func (service DefaultApplicationManagerV1Service) GetAlertHistory(token, orgId, 
 func (service DefaultApplicationManagerV1Service) GetResourceAlertHistory(token, orgId, envId, resourceId string) (*[]alerts.ResourceAlertHistory, error) {
 
 	resp, err := service.httpClient.GetResourceAlertHistory(token, orgId, envId, resourceId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}
+
+func (service DefaultApplicationManagerV1Service) GetApplications(token, orgId, envId string) (*[]responses.ApplicationResponse, error) {
+
+	resp, err := service.httpClient.GetApplications(token, orgId, envId)
 
 	if err != nil {
 		return nil, err

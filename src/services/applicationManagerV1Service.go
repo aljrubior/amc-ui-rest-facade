@@ -1,6 +1,7 @@
 package services
 
 import (
+	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
 )
@@ -13,4 +14,6 @@ type ApplicationManagerV1Service interface {
 	DeleteSingleAlert(token, orgId, envId, alertId string) error
 	GetAlertHistory(token, orgId, envId, alertId string) (*[]alerts.AlertHistoryResponse, error)
 	GetResourceAlertHistory(token, orgId, envId, resourceId string) (*[]alerts.ResourceAlertHistory, error)
+
+	GetApplications(token, orgId, envId string) (*[]responses.ApplicationResponse, error)
 }

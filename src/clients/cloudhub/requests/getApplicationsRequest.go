@@ -7,23 +7,23 @@ import (
 	"net/http"
 )
 
-func NewGetApplications(
+func NewGetApplicationsRequest(
 	config *config.CloudhubConfigClient,
-	bearerToken string) *GetApplications {
+	bearerToken string) *GetApplicationsRequest {
 
-	return &GetApplications{
+	return &GetApplicationsRequest{
 		config:      config,
 		bearerToken: bearerToken,
 	}
 }
 
-type GetApplications struct {
+type GetApplicationsRequest struct {
 	clients.BaseHttpRequest
 	config      *config.CloudhubConfigClient
 	bearerToken string
 }
 
-func (t *GetApplications) buildUri() string {
+func (t *GetApplicationsRequest) buildUri() string {
 
 	protocol := t.config.Protocol
 	host := t.config.Host
@@ -33,7 +33,7 @@ func (t *GetApplications) buildUri() string {
 	return fmt.Sprintf("%s://%s:%s%s", protocol, host, port, path)
 }
 
-func (t *GetApplications) Build() *http.Request {
+func (t *GetApplicationsRequest) Build() *http.Request {
 
 	uri := t.buildUri()
 
