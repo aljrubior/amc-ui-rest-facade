@@ -8,7 +8,7 @@ import (
 )
 
 func NewGetApplicationsRequest(
-	config *config.ApplicationManagerV1ConfigClient,
+	config *config.HybridConfigClient,
 	bearerToken,
 	orgId,
 	envId string) *GetApplicationsRequest {
@@ -23,7 +23,7 @@ func NewGetApplicationsRequest(
 
 type GetApplicationsRequest struct {
 	clients.BaseHttpRequest
-	config *config.ApplicationManagerV1ConfigClient
+	config *config.HybridConfigClient
 	bearerToken,
 	orgId,
 	envId string

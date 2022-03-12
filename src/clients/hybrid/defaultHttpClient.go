@@ -6,7 +6,7 @@ import (
 )
 
 func NewDefaultHttpClient(
-	config config.ApplicationManagerV1ConfigClient) DefaultHttpClient {
+	config config.HybridConfigClient) DefaultHttpClient {
 
 	return DefaultHttpClient{
 		config: config,
@@ -15,5 +15,5 @@ func NewDefaultHttpClient(
 
 type DefaultHttpClient struct {
 	clients.BaseHttpClient
-	config config.ApplicationManagerV1ConfigClient
+	config config.HybridConfigClient
 }

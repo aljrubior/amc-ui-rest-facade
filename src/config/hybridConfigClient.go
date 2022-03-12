@@ -1,7 +1,7 @@
 package config
 
-func NewApplicationManagerV1ConfigClient() ApplicationManagerV1ConfigClient {
-	return ApplicationManagerV1ConfigClient{
+func NewHybridConfigClient() HybridConfigClient {
+	return HybridConfigClient{
 		Protocol:                 "http",
 		Host:                     "application-manager-service.arm.svc",
 		Port:                     "8080",
@@ -13,7 +13,7 @@ func NewApplicationManagerV1ConfigClient() ApplicationManagerV1ConfigClient {
 	}
 }
 
-type ApplicationManagerV1ConfigClient struct {
+type HybridConfigClient struct {
 	Protocol,
 	Host,
 	Port,

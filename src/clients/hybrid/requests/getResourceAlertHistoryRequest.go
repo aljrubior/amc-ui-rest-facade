@@ -8,7 +8,7 @@ import (
 )
 
 func NewGetResourceAlertHistoryRequest(
-	config *config.ApplicationManagerV1ConfigClient,
+	config *config.HybridConfigClient,
 	bearerToken,
 	orgId,
 	envId,
@@ -25,7 +25,7 @@ func NewGetResourceAlertHistoryRequest(
 
 type GetResourceAlertHistoryRequest struct {
 	clients.BaseHttpRequest
-	config *config.ApplicationManagerV1ConfigClient
+	config *config.HybridConfigClient
 	bearerToken,
 	orgId,
 	envId,

@@ -9,7 +9,7 @@ import (
 )
 
 func NewPatchSingleAlertRequest(
-	config *config.ApplicationManagerV1ConfigClient,
+	config *config.HybridConfigClient,
 	bearerToken,
 	orgId,
 	envId,
@@ -28,7 +28,7 @@ func NewPatchSingleAlertRequest(
 
 type PatchSingleAlertRequest struct {
 	clients.BaseHttpRequest
-	config *config.ApplicationManagerV1ConfigClient
+	config *config.HybridConfigClient
 	bearerToken,
 	orgId,
 	envId,

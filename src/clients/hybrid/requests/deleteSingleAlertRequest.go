@@ -8,7 +8,7 @@ import (
 )
 
 func NewDeleteSingleAlertRequest(
-	config *config.ApplicationManagerV1ConfigClient,
+	config *config.HybridConfigClient,
 	bearerToken,
 	orgId,
 	envId,
@@ -25,7 +25,7 @@ func NewDeleteSingleAlertRequest(
 
 type DeleteSingleAlertRequest struct {
 	clients.BaseHttpRequest
-	config *config.ApplicationManagerV1ConfigClient
+	config *config.HybridConfigClient
 	bearerToken,
 	orgId,
 	envId,

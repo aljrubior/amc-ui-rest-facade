@@ -8,7 +8,7 @@ import (
 )
 
 func NewGetAlertsRequest(
-	config *config.ApplicationManagerV1ConfigClient,
+	config *config.HybridConfigClient,
 	bearerToken,
 	orgId,
 	envId string) *GetAlertsRequest {
@@ -23,7 +23,7 @@ func NewGetAlertsRequest(
 
 type GetAlertsRequest struct {
 	clients.BaseHttpRequest
-	config *config.ApplicationManagerV1ConfigClient
+	config *config.HybridConfigClient
 	bearerToken,
 	orgId,
 	envId string

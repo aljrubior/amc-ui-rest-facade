@@ -9,7 +9,7 @@ import (
 )
 
 func NewPostAlertRequest(
-	config *config.ApplicationManagerV1ConfigClient,
+	config *config.HybridConfigClient,
 	bearerToken,
 	orgId,
 	envId string,
@@ -26,7 +26,7 @@ func NewPostAlertRequest(
 
 type PostAlertRequest struct {
 	clients.BaseHttpRequest
-	config *config.ApplicationManagerV1ConfigClient
+	config *config.HybridConfigClient
 	bearerToken,
 	orgId,
 	envId string
