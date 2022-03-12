@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/cluster"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/serverGroup"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
@@ -117,6 +118,17 @@ func (t DefaultHybridService) GetApplications(token, orgId, envId string) (*[]re
 func (t DefaultHybridService) GetServerGroups(token, orgId, envId string) (*[]serverGroup.Response, error) {
 
 	resp, err := t.httpClient.GetServerGroups(token, orgId, envId)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &resp.Data, nil
+}
+
+func (t DefaultHybridService) GetClusters(token, orgId, envId string) (*[]cluster.Response, error) {
+
+	resp, err := t.httpClient.GetClusters(token, orgId, envId)
 
 	if err != nil {
 		return nil, err

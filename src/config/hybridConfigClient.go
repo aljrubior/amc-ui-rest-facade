@@ -11,6 +11,7 @@ func NewHybridConfigClient() HybridConfigClient {
 		ResourceAlertHistoryPath: "/api/v1/alerts/resource/%s/history",
 		ApplicationsPath:         "/api/v1/applications",
 		ServerGroupsPath:         "/api/v1/serverGroups",
+		ClustersPath:             "/api/v1/clusters",
 	}
 }
 
@@ -23,5 +24,6 @@ type HybridConfigClient struct {
 	AlertHistoryPath,
 	ResourceAlertHistoryPath,
 	ApplicationsPath,
-	ServerGroupsPath string
+	ServerGroupsPath,
+	ClustersPath string
 }
