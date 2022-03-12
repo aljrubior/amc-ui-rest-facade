@@ -1,19 +1,19 @@
-package fabric
+package hybrid
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/serverGroup"
 	"io/ioutil"
 	"net/http"
 	"time"
 )
 
-func (t DefaultHttpClient) GetDeployments(token, orgId, envId string) (*responses.DeploymentsResponse, error) {
+func (t DefaultHttpClient) GetServerGroups(token, orgId, envId string) (*serverGroup.DataResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetDeploymentsRequest(&t.config, token, orgId, envId).Build()
+	req := requests.NewGetServerGroupsRequest(&t.config, token, orgId, envId).Build()
 
 	resp, err := httpClient.Do(req)
 
@@ -33,7 +33,7 @@ func (t DefaultHttpClient) GetDeployments(token, orgId, envId string) (*response
 		return nil, err
 	}
 
-	var response responses.DeploymentsResponse
+	var response serverGroup.DataResponse
 
 	err = json.Unmarshal(data, &response)
 

@@ -2,6 +2,7 @@ package hybrid
 
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/serverGroup"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 )
 
@@ -15,4 +16,5 @@ type HttpClient interface {
 	GetResourceAlertHistory(token, orgId, envId, resourceId string) (*alerts.ResourceAlertHistoriesResponse, error)
 
 	GetApplications(token, orgId, envId string) (*responses.ApplicationsResponse, error)
+	GetServerGroups(token, orgId, envId string) (*serverGroup.DataResponse, error)
 }

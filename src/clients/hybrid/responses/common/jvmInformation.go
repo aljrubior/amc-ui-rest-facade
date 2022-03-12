@@ -1,4 +1,4 @@
-package responses
+package common
 
 type JVMInformation struct {
 	Runtime       JVMInformationRuntime       `json:"runtime"`

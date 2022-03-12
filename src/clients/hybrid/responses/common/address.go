@@ -1,6 +1,6 @@
-package responses
+package common
 
-type TargetAddress struct {
+type Address struct {
 	Ip               string `json:"ip"`
 	NetworkInterface string `json:"networkInterface"`
 }

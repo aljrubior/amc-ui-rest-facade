@@ -1,4 +1,4 @@
-package responses
+package common
 
 type OSInformation struct {
 	Name         string `json:"name"`

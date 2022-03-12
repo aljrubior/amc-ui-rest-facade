@@ -1,4 +1,4 @@
-package responses
+package common
 
 type JVMInformationRuntime struct {
 	Name    string `json:"name"`

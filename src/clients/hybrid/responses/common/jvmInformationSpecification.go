@@ -1,4 +1,4 @@
-package responses
+package common
 
 type JVMInformationSpecification struct {
 	Vendor  string `json:"vendor"`
