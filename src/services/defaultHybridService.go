@@ -2,23 +2,24 @@ package services
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
 )
 
-func NewDefaultApplicationManagerV1Service(
-	httpClient hybrid.HttpClient) DefaultApplicationManagerV1Service {
-	return DefaultApplicationManagerV1Service{
+func NewDefaultHybridService(
+	httpClient hybrid.HttpClient) DefaultHybridService {
+	return DefaultHybridService{
 		httpClient: httpClient,
 	}
 }
 
-type DefaultApplicationManagerV1Service struct {
+type DefaultHybridService struct {
 	httpClient hybrid.HttpClient
 }
 
-func (service DefaultApplicationManagerV1Service) GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error) {
+func (service DefaultHybridService) GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error) {
 
 	resp, err := service.httpClient.GetAlerts(token, orgId, envId)
 
@@ -29,7 +30,7 @@ func (service DefaultApplicationManagerV1Service) GetAlerts(token, orgId, envId 
 	return &resp.Data, nil
 }
 
-func (service DefaultApplicationManagerV1Service) PostAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+func (service DefaultHybridService) PostAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
 
 	body, err := json.Marshal(request)
 
@@ -46,7 +47,7 @@ func (service DefaultApplicationManagerV1Service) PostAlert(token, orgId, envId 
 	return &resp.Data, nil
 }
 
-func (service DefaultApplicationManagerV1Service) GetSingleAlert(token, orgId, envId, alertId string) (*[]alerts.AlertResponse, error) {
+func (service DefaultHybridService) GetSingleAlert(token, orgId, envId, alertId string) (*[]alerts.AlertResponse, error) {
 
 	resp, err := service.httpClient.GetSingleAlert(token, orgId, envId, alertId)
 
@@ -57,7 +58,7 @@ func (service DefaultApplicationManagerV1Service) GetSingleAlert(token, orgId, e
 	return &resp.Data, nil
 }
 
-func (service DefaultApplicationManagerV1Service) UpdateSingleAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+func (service DefaultHybridService) UpdateSingleAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
 
 	body, err := json.Marshal(request)
 
@@ -74,12 +75,12 @@ func (service DefaultApplicationManagerV1Service) UpdateSingleAlert(token, orgId
 	return &resp.Data, nil
 }
 
-func (service DefaultApplicationManagerV1Service) DeleteSingleAlert(token, orgId, envId, alertId string) error {
+func (service DefaultHybridService) DeleteSingleAlert(token, orgId, envId, alertId string) error {
 
 	return service.httpClient.DeleteSingleAlert(token, orgId, envId, alertId)
 }
 
-func (service DefaultApplicationManagerV1Service) GetAlertHistory(token, orgId, envId, alertId string) (*[]alerts.AlertHistoryResponse, error) {
+func (service DefaultHybridService) GetAlertHistory(token, orgId, envId, alertId string) (*[]alerts.AlertHistoryResponse, error) {
 
 	resp, err := service.httpClient.GetAlertHistory(token, orgId, envId, alertId)
 
@@ -90,7 +91,7 @@ func (service DefaultApplicationManagerV1Service) GetAlertHistory(token, orgId, 
 	return &resp.Data, nil
 }
 
-func (service DefaultApplicationManagerV1Service) GetResourceAlertHistory(token, orgId, envId, resourceId string) (*[]alerts.ResourceAlertHistory, error) {
+func (service DefaultHybridService) GetResourceAlertHistory(token, orgId, envId, resourceId string) (*[]alerts.ResourceAlertHistory, error) {
 
 	resp, err := service.httpClient.GetResourceAlertHistory(token, orgId, envId, resourceId)
 
@@ -101,7 +102,7 @@ func (service DefaultApplicationManagerV1Service) GetResourceAlertHistory(token,
 	return &resp.Data, nil
 }
 
-func (service DefaultApplicationManagerV1Service) GetApplications(token, orgId, envId string) (*[]responses.ApplicationResponse, error) {
+func (service DefaultHybridService) GetApplications(token, orgId, envId string) (*[]responses.ApplicationResponse, error) {
 
 	resp, err := service.httpClient.GetApplications(token, orgId, envId)
 

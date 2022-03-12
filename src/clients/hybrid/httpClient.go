@@ -1,7 +1,7 @@
 package hybrid
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 )
 
