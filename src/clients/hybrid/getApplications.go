@@ -2,8 +2,8 @@ package hybrid
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
 	"io/ioutil"
 	"net/http"
 	"time"
