@@ -1,4 +1,4 @@
-package applicationManagerV1
+package hybrid
 
 import (
 	"encoding/json"
@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-func (client DefaultHttpClient) GetAlerts(token, orgId, envId string) (*alerts.AlertsResponse, error) {
+func (t DefaultHttpClient) GetAlertHistory(token, orgId, envId, alertId string) (*alerts.AlertHistoriesResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetAlertsRequest(&client.config, token, orgId, envId).Build()
+	req := requests.NewGetAlertHistoryRequest(&t.config, token, orgId, envId, alertId).Build()
 
 	resp, err := httpClient.Do(req)
 
@@ -24,7 +24,7 @@ func (client DefaultHttpClient) GetAlerts(token, orgId, envId string) (*alerts.A
 	}
 
 	if resp.StatusCode != 200 {
-		return nil, client.ThrowError(resp)
+		return nil, t.ThrowError(resp)
 	}
 
 	data, err := ioutil.ReadAll(resp.Body)
@@ -33,7 +33,7 @@ func (client DefaultHttpClient) GetAlerts(token, orgId, envId string) (*alerts.A
 		return nil, err
 	}
 
-	var response alerts.AlertsResponse
+	var response alerts.AlertHistoriesResponse
 
 	err = json.Unmarshal(data, &response)
 

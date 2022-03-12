@@ -1,4 +1,4 @@
-package applicationManagerV1
+package hybrid
 
 import (
 	"encoding/json"
@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-func (client DefaultHttpClient) PostAlert(token, orgId, envId string, body []byte) (*alerts.AlertsResponse, error) {
+func (t DefaultHttpClient) GetSingleAlert(token, orgId, envId, alertId string) (*alerts.AlertsResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewPostAlertRequest(&client.config, token, orgId, envId, body).Build()
+	req := requests.NewGetSingleAlertRequest(&t.config, token, orgId, envId, alertId).Build()
 
 	resp, err := httpClient.Do(req)
 
@@ -24,7 +24,7 @@ func (client DefaultHttpClient) PostAlert(token, orgId, envId string, body []byt
 	}
 
 	if resp.StatusCode != 200 {
-		return nil, client.ThrowError(resp)
+		return nil, t.ThrowError(resp)
 	}
 
 	data, err := ioutil.ReadAll(resp.Body)

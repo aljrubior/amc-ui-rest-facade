@@ -1,19 +1,19 @@
-package applicationManagerV1
+package hybrid
 
 import (
 	"encoding/json"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
 	"io/ioutil"
 	"net/http"
 	"time"
 )
 
-func (t DefaultHttpClient) GetAlertHistory(token, orgId, envId, alertId string) (*alerts.AlertHistoriesResponse, error) {
+func (t DefaultHttpClient) GetApplications(token, orgId, envId string) (*responses.ApplicationsResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetAlertHistoryRequest(&t.config, token, orgId, envId, alertId).Build()
+	req := requests.NewGetApplicationsRequest(&t.config, token, orgId, envId).Build()
 
 	resp, err := httpClient.Do(req)
 
@@ -33,7 +33,7 @@ func (t DefaultHttpClient) GetAlertHistory(token, orgId, envId, alertId string) 
 		return nil, err
 	}
 
-	var response alerts.AlertHistoriesResponse
+	var response responses.ApplicationsResponse
 
 	err = json.Unmarshal(data, &response)
 

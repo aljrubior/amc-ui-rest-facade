@@ -1,4 +1,4 @@
-package applicationManagerV1
+package hybrid
 
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"

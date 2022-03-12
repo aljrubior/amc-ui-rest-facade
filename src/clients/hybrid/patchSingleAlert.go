@@ -1,4 +1,4 @@
-package applicationManagerV1
+package hybrid
 
 import (
 	"encoding/json"

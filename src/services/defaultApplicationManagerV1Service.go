@@ -2,21 +2,20 @@ package services
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
 )
 
 func NewDefaultApplicationManagerV1Service(
-	httpClient applicationManagerV1.HttpClient) DefaultApplicationManagerV1Service {
+	httpClient hybrid.HttpClient) DefaultApplicationManagerV1Service {
 	return DefaultApplicationManagerV1Service{
 		httpClient: httpClient,
 	}
 }
 
 type DefaultApplicationManagerV1Service struct {
-	httpClient applicationManagerV1.HttpClient
+	httpClient hybrid.HttpClient
 }
 
 func (service DefaultApplicationManagerV1Service) GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error) {
