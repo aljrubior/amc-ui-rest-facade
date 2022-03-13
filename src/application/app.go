@@ -3,7 +3,7 @@ package application
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/applicationController"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/healthController"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/health"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/permissionController"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/serverController"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/targetController"
@@ -25,7 +25,7 @@ type App struct {
 
 	alertController       alertController.AlertController
 	applicationController applicationController.ApplicationController
-	healthController      healthController.HealthController
+	healthController      health.Controller
 	serverController      serverController.ServerController
 	targetController      targetController.TargetController
 	permissionController  permissionController.PermissionController
@@ -33,7 +33,7 @@ type App struct {
 }
 
 func (t *App) Initialize() {
-	t.healthController = healthController.NewDefaultHealthController()
+	t.healthController = health.NewDefaultController()
 	t.initializeRoutes()
 }
 
