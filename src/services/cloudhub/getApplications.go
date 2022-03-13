@@ -2,9 +2,9 @@ package cloudhub
 
 import "github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/responses"
 
-func (t DefaultService) GetApplications(token string) (*[]responses.ApplicationResponse, error) {
+func (t DefaultService) GetApplications(token, org, envId string) (*[]responses.ApplicationResponse, error) {
 
-	resp, err := t.httpClient.GetApplications(token)
+	resp, err := t.httpClient.GetApplications(token, org, envId)
 
 	if err != nil {
 		return nil, err

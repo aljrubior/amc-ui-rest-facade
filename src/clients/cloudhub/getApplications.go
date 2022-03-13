@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-func (client DefaultHttpClient) GetApplications(token string) (*[]responses.ApplicationResponse, error) {
+func (client DefaultHttpClient) GetApplications(token, orgId, envId string) (*[]responses.ApplicationResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetApplicationsRequest(&client.config, token).Build()
+	req := requests.NewGetApplicationsRequest(&client.config, token, orgId, envId).Build()
 
 	resp, err := httpClient.Do(req)
 

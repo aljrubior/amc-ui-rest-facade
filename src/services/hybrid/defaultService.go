@@ -15,11 +15,12 @@ func NewDefaultService(httpClient hybrid.HttpClient) DefaultService {
 	lock.Lock()
 	defer lock.Unlock()
 
-	if &instance == nil {
+	if instance == (DefaultService{}) {
 		instance = DefaultService{
 			httpClient: httpClient,
 		}
 	}
+
 	return instance
 }
 

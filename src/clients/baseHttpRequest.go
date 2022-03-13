@@ -28,7 +28,7 @@ func (this *BaseHttpRequest) AddAuthorizationHeader(req *http.Request, token str
 
 func (this *BaseHttpRequest) AddDefaultHeaders(req *http.Request, orgId, envId, token string) {
 
-	req.Header.Add("Authorization", this.GetBearerTokenValue(token))
+	req.Header.Add("Authorization", token)
 	req.Header.Add("X-ANYPNT-ENV-ID", envId)
 	req.Header.Add("X-ANYPNT-ORG-ID", orgId)
 }

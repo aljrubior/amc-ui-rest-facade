@@ -9,18 +9,24 @@ import (
 
 func NewGetApplicationsRequest(
 	config *config.CloudhubConfigClient,
-	bearerToken string) *GetApplicationsRequest {
+	bearerToken,
+	orgId,
+	envId string) *GetApplicationsRequest {
 
 	return &GetApplicationsRequest{
 		config:      config,
 		bearerToken: bearerToken,
+		orgId:       orgId,
+		envId:       envId,
 	}
 }
 
 type GetApplicationsRequest struct {
 	clients.BaseHttpRequest
-	config      *config.CloudhubConfigClient
-	bearerToken string
+	config *config.CloudhubConfigClient
+	bearerToken,
+	orgId,
+	envId string
 }
 
 func (t *GetApplicationsRequest) buildUri() string {

@@ -13,5 +13,5 @@ type HttpClient interface {
 	DeleteSingleAlert(token, orgId, envId, alertId string) error
 	GetAlertHistory(token, orgId, envId, alertId string) (*alerts.AlertHistoriesResponse, error)
 
-	GetApplications(token string) (*[]responses.ApplicationResponse, error)
+	GetApplications(token, orgId, envId string) (*[]responses.ApplicationResponse, error)
 }

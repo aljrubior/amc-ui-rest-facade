@@ -1,9 +1,7 @@
 package application
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
-	"github.com/aljrubior/amc-ui-rest-facade/services/fabric"
-	"github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
+	"github.com/aljrubior/amc-ui-rest-facade/services/application"
 	"sync"
 )
 
@@ -13,38 +11,26 @@ var (
 	instance DefaultController
 )
 
-func NewDefaultService(
-	hybridService hybrid.Service,
-	cloudhubService cloudhub.Service,
-	fabricService fabric.Service) DefaultController {
+func NewDefaultService(applicationService application.Service) DefaultController {
 
 	lock.Lock()
 	defer lock.Unlock()
 
 	if &instance == nil {
 		instance = DefaultController{
-			hybridService:   hybridService,
-			cloudhubService: cloudhubService,
-			fabricService:   fabricService,
+			applicationService: applicationService,
 		}
 	}
 	return instance
 }
 
-func NewDefaultController(
-	hybridService hybrid.Service,
-	cloudhubService cloudhub.Service,
-	fabricService fabric.Service) DefaultController {
+func NewDefaultController(applicationService application.Service) DefaultController {
 
 	return DefaultController{
-		hybridService:   hybridService,
-		cloudhubService: cloudhubService,
-		fabricService:   fabricService,
+		applicationService: applicationService,
 	}
 }
 
 type DefaultController struct {
-	hybridService   hybrid.Service
-	cloudhubService cloudhub.Service
-	fabricService   fabric.Service
+	applicationService application.Service
 }

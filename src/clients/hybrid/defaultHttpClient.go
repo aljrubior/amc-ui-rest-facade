@@ -17,7 +17,7 @@ func NewDefaultHttpClient(config config.HybridConfigClient) DefaultHttpClient {
 	lock.Lock()
 	defer lock.Unlock()
 
-	if &instance == nil {
+	if instance == (DefaultHttpClient{}) {
 		instance = DefaultHttpClient{
 			config: config,
 		}
