@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func (t DefaultController) GetInfo(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode()
+func (t DefaultController) GetApplications(w http.ResponseWriter, r *http.Request) {
+	json.NewEncoder(w).Encode("{}")
 }

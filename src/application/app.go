@@ -34,6 +34,7 @@ type App struct {
 
 func (t *App) Initialize() {
 	t.healthController = health.NewDefaultController()
+	t.initializeApplicationContext()
 	t.initializeRoutes()
 }
 

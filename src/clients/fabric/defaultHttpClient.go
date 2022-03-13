@@ -3,14 +3,27 @@ package fabric
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
+	"sync"
 )
 
-func NewDefaultHttpClient(
-	config config.FabricConfigClient) DefaultHttpClient {
+var lock = &sync.Mutex{}
 
-	return DefaultHttpClient{
-		config: config,
+var (
+	instance DefaultHttpClient
+)
+
+func NewDefaultHttpClient(config config.FabricConfigClient) DefaultHttpClient {
+
+	lock.Lock()
+	defer lock.Unlock()
+
+	if &instance == nil {
+		instance = DefaultHttpClient{
+			config: config,
+		}
 	}
+
+	return instance
 }
 
 type DefaultHttpClient struct {
