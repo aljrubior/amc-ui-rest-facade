@@ -10,6 +10,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources"
@@ -18,6 +19,7 @@ import (
 	cloudhub2 "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
 	hybrid2 "github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
+	runtimeFabricManagement2 "github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
 )
 
 // Injectors from initializeApplicationController.go:
@@ -39,10 +41,12 @@ func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigC
 
 // Injectors from initializeFabricApplicationDatasource.go:
 
-func InitializeFabricApplicationDatasource(configClient config.FabricConfigClient) (datasources.ApplicationDatasource, error) {
-	defaultHttpClient := fabric.NewDefaultHttpClient(configClient)
+func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfigClient, runtimeFabricManagementClientConfig config.RuntimeFabricManagementClientConfig) (datasources.ApplicationDatasource, error) {
+	defaultHttpClient := fabric.NewDefaultHttpClient(fabricConfigClient)
 	defaultService := fabric2.NewDefaultService(defaultHttpClient)
-	fabricApplicationDatasource := applications.NewFabricApplicationDatasource(defaultService)
+	runtimeFabricManagementDefaultHttpClient := runtimeFabricManagement.NewDefaultHttpClient(runtimeFabricManagementClientConfig)
+	runtimeFabricManagementDefaultService := runtimeFabricManagement2.NewDefaultService(runtimeFabricManagementDefaultHttpClient)
+	fabricApplicationDatasource := applications.NewFabricApplicationDatasource(defaultService, runtimeFabricManagementDefaultService)
 	return fabricApplicationDatasource, nil
 }
 
