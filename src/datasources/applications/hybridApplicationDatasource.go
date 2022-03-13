@@ -16,7 +16,7 @@ type HybridApplicationDatasource struct {
 	hybridService hybrid.Service
 }
 
-func (t HybridApplicationDatasource) GetApplications(token, orgId, envId string) (*application.DataResponse, error) {
+func (t HybridApplicationDatasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {
 
 	data := make([]application.Response, 0)
 
@@ -26,7 +26,9 @@ func (t HybridApplicationDatasource) GetApplications(token, orgId, envId string)
 		return nil, err
 	}
 
-	data = append(data, transformers.NewHybridApplicationTransformer(hybridApps).Transform()...)
+	apps := transformers.NewHybridApplicationTransformer(hybridApps).Transform()
 
-	return application.NewDataResponse(&data), nil
+	data = append(data, apps...)
+
+	return &data, nil
 }

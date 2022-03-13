@@ -9,7 +9,7 @@ import (
 var lock = &sync.Mutex{}
 
 var (
-	instance DefaultHttpClient
+	instance *DefaultHttpClient
 )
 
 func NewDefaultHttpClient(config config.CloudhubConfigClient) DefaultHttpClient {
@@ -17,13 +17,13 @@ func NewDefaultHttpClient(config config.CloudhubConfigClient) DefaultHttpClient 
 	lock.Lock()
 	defer lock.Unlock()
 
-	if &instance == nil {
-		instance = DefaultHttpClient{
+	if instance == nil {
+		instance = &DefaultHttpClient{
 			config: config,
 		}
 	}
 
-	return instance
+	return *instance
 }
 
 type DefaultHttpClient struct {

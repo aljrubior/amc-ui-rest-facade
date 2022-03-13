@@ -30,7 +30,7 @@ func InitializeApplicationController(datasources2 []datasources.ApplicationDatas
 
 // Injectors from initializeCloudhubApplicationDatasource.go:
 
-func initializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (datasources.ApplicationDatasource, error) {
+func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (datasources.ApplicationDatasource, error) {
 	defaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
 	defaultService := cloudhub2.NewDefaultService(defaultHttpClient)
 	cloudhubApplicationDatasource := applications.NewCloudhubApplicationDatasource(defaultService)
@@ -39,7 +39,7 @@ func initializeCloudhubApplicationDatasource(configClient config.CloudhubConfigC
 
 // Injectors from initializeFabricApplicationDatasource.go:
 
-func initializeFabricApplicationDatasource(configClient config.FabricConfigClient) (datasources.ApplicationDatasource, error) {
+func InitializeFabricApplicationDatasource(configClient config.FabricConfigClient) (datasources.ApplicationDatasource, error) {
 	defaultHttpClient := fabric.NewDefaultHttpClient(configClient)
 	defaultService := fabric2.NewDefaultService(defaultHttpClient)
 	fabricApplicationDatasource := applications.NewFabricApplicationDatasource(defaultService)
@@ -48,7 +48,7 @@ func initializeFabricApplicationDatasource(configClient config.FabricConfigClien
 
 // Injectors from initializeHybridApplicationDatasource.go:
 
-func initializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (datasources.ApplicationDatasource, error) {
+func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (datasources.ApplicationDatasource, error) {
 	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
 	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
 	hybridApplicationDatasource := applications.NewHybridApplicationDatasource(defaultService)

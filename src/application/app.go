@@ -8,6 +8,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/serverController"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/targetController"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/userController"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -30,11 +31,16 @@ type App struct {
 	targetController      targetController.TargetController
 	permissionController  permissionController.PermissionController
 	userController        userController.UserController
+
+	applicationDatasources []datasources.ApplicationDatasource
 }
 
 func (t *App) Initialize() {
+
+	t.initializeConfigClient()
+	t.initializeApplicationDatasources()
+	t.initializeControllers()
 	t.healthController = health.NewDefaultController()
-	t.initializeApplicationContext()
 	t.initializeRoutes()
 }
 

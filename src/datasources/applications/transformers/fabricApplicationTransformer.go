@@ -1,6 +1,7 @@
 package transformers
 
 import (
+	"fmt"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
 	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
 )
@@ -16,9 +17,11 @@ type FabricApplicationTransformer struct {
 }
 
 func (t *FabricApplicationTransformer) Transform() []application.Response {
-	result := make([]application.Response, len(*t.response))
+	result := make([]application.Response, 0)
 
 	for _, v := range *t.response {
+
+		println(fmt.Sprintf("%v", v))
 		result = append(result, v)
 	}
 

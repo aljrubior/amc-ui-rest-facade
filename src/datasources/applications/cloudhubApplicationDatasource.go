@@ -16,7 +16,7 @@ type CloudhubApplicationDatasource struct {
 	cloudhubService cloudhub.Service
 }
 
-func (t CloudhubApplicationDatasource) GetApplications(token, orgId, envId string) (*application.DataResponse, error) {
+func (t CloudhubApplicationDatasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {
 
 	data := make([]application.Response, 0)
 
@@ -26,7 +26,9 @@ func (t CloudhubApplicationDatasource) GetApplications(token, orgId, envId strin
 		return nil, err
 	}
 
-	data = append(data, transformers.NewCloudhubApplicationTransformer(resp).Transform()...)
+	apps := transformers.NewCloudhubApplicationTransformer(resp).Transform()
 
-	return application.NewDataResponse(&data), nil
+	data = append(data, apps...)
+
+	return &data, nil
 }

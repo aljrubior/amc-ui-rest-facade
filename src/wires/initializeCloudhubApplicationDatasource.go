@@ -12,7 +12,7 @@ import (
 	"github.com/google/wire"
 )
 
-func initializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (datasources.ApplicationDatasource, error) {
+func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (datasources.ApplicationDatasource, error) {
 
 	wire.Build(
 		cloudhubHttpClient.NewDefaultHttpClient,

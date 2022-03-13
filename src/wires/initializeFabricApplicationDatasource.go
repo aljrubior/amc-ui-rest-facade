@@ -12,7 +12,7 @@ import (
 	"github.com/google/wire"
 )
 
-func initializeFabricApplicationDatasource(configClient config.FabricConfigClient) (datasources.ApplicationDatasource, error) {
+func InitializeFabricApplicationDatasource(configClient config.FabricConfigClient) (datasources.ApplicationDatasource, error) {
 
 	wire.Build(
 		fabricHttpClient.NewDefaultHttpClient,
