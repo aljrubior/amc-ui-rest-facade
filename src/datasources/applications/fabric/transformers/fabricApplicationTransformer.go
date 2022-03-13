@@ -2,21 +2,21 @@ package transformers
 
 import (
 	"fmt"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric/formatters/model"
 	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
 )
 
-func NewFabricApplicationTransformer(response *[]responses.DeploymentResponse) *FabricApplicationTransformer {
+func NewFabricApplicationTransformer(response *[]model.Deployment) *FabricApplicationTransformer {
 	return &FabricApplicationTransformer{
 		response: response,
 	}
 }
 
 type FabricApplicationTransformer struct {
-	response *[]responses.DeploymentResponse
+	response *[]model.Deployment
 }
 
-func (t *FabricApplicationTransformer) Transform() []application.Response {
+func (t FabricApplicationTransformer) Transform() *[]application.Response {
 	result := make([]application.Response, 0)
 
 	for _, v := range *t.response {
@@ -25,5 +25,5 @@ func (t *FabricApplicationTransformer) Transform() []application.Response {
 		result = append(result, v)
 	}
 
-	return result
+	return &result
 }

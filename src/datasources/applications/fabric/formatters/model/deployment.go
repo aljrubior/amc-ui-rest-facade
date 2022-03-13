@@ -1,4 +1,4 @@
-package formatters
+package model
 
 type Deployment struct {
 	Id                 string            `json:"id"`

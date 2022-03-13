@@ -1,4 +1,4 @@
-package formatters
+package model
 
 type Target struct {
 	Type     string `json:"type"`

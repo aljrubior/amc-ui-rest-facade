@@ -15,6 +15,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
+	fabric3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric"
 	application2 "github.com/aljrubior/amc-ui-rest-facade/services/application"
 	cloudhub2 "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
@@ -46,7 +47,7 @@ func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfi
 	defaultService := fabric2.NewDefaultService(defaultHttpClient)
 	runtimeFabricManagementDefaultHttpClient := runtimeFabricManagement.NewDefaultHttpClient(runtimeFabricManagementClientConfig)
 	runtimeFabricManagementDefaultService := runtimeFabricManagement2.NewDefaultService(runtimeFabricManagementDefaultHttpClient)
-	fabricApplicationDatasource := applications.NewFabricApplicationDatasource(defaultService, runtimeFabricManagementDefaultService)
+	fabricApplicationDatasource := fabric3.NewFabricApplicationDatasource(defaultService, runtimeFabricManagementDefaultService)
 	return fabricApplicationDatasource, nil
 }
 

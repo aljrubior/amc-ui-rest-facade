@@ -1,4 +1,4 @@
-package formatters
+package model
 
 type Artifact struct {
 	LastUpdateTime int64  `json:"lastUpdateTime"`

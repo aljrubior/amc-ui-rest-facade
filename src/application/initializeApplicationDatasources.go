@@ -22,7 +22,7 @@ func (t *App) initializeApplicationDatasources() {
 
 	// t.applicationDatasources = append(t.applicationDatasources, datasource)
 
-	datasource, err = wires.InitializeFabricApplicationDatasource(fabricClientConfig)
+	datasource, err = wires.InitializeFabricApplicationDatasource(fabricClientConfig, runtimeFabricManagementClientConfig)
 
 	if err != nil {
 		panic("Error: initializeApplicationContext dependency injection failed")

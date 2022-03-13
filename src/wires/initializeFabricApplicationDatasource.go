@@ -8,7 +8,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric"
 	fabricService "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
 	runtimeFabricManagementService "github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
 	"github.com/google/wire"
@@ -23,13 +23,13 @@ func InitializeFabricApplicationDatasource(
 		runtimeFabricManagement.NewDefaultHttpClient,
 		fabricService.NewDefaultService,
 		runtimeFabricManagementService.NewDefaultService,
-		applications.NewFabricApplicationDatasource,
+		fabric.NewFabricApplicationDatasource,
 		wire.Bind(new(fabricHttpClient.HttpClient), new(fabricHttpClient.DefaultHttpClient)),
 		wire.Bind(new(runtimeFabricManagement.HttpClient), new(runtimeFabricManagement.DefaultHttpClient)),
 		wire.Bind(new(fabricService.Service), new(fabricService.DefaultService)),
 		wire.Bind(new(runtimeFabricManagementService.Service), new(runtimeFabricManagementService.DefaultService)),
-		wire.Bind(new(datasources.ApplicationDatasource), new(applications.FabricApplicationDatasource)),
+		wire.Bind(new(datasources.ApplicationDatasource), new(fabric.FabricApplicationDatasource)),
 	)
 
-	return applications.FabricApplicationDatasource{}, nil
+	return fabric.FabricApplicationDatasource{}, nil
 }
