@@ -6,7 +6,7 @@ func (t *App) initializeRoutes() {
 
 	t.Router = mux.NewRouter().StrictSlash(true)
 
-	//t.Router.HandleFunc("/applications", t.applicationController.GetApplications).Methods("GET")
+	t.Router.HandleFunc("/applications", t.applicationController.GetApplications).Methods("GET")
 	//
 	//t.Router.HandleFunc("/targets", t.targetController.GetTargets).Methods("GET")
 	//

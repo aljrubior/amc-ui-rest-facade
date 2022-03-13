@@ -4,6 +4,8 @@ import (
 	"errors"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
+	"github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
 )
 
 const (
@@ -12,8 +14,8 @@ const (
 )
 
 func NewDefaultAlertService(
-	hybridService HybridService,
-	cloudhubService CloudhubService) DefaultAlertService {
+	hybridService hybrid.Service,
+	cloudhubService cloudhub.Service) DefaultAlertService {
 
 	return DefaultAlertService{
 		hybridService:   hybridService,
@@ -22,8 +24,8 @@ func NewDefaultAlertService(
 }
 
 type DefaultAlertService struct {
-	hybridService   HybridService
-	cloudhubService CloudhubService
+	hybridService   hybrid.Service
+	cloudhubService cloudhub.Service
 }
 
 func (service DefaultAlertService) GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error) {

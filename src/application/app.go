@@ -2,7 +2,7 @@ package application
 
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/applicationController"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/health"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/permissionController"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/serverController"
@@ -24,7 +24,7 @@ type App struct {
 	Router *mux.Router
 
 	alertController       alertController.AlertController
-	applicationController applicationController.ApplicationController
+	applicationController application.Controller
 	healthController      health.Controller
 	serverController      serverController.ServerController
 	targetController      targetController.TargetController

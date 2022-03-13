@@ -1,7 +1,7 @@
-package applicationController
+package application
 
 import "net/http"
 
-type ApplicationController interface {
+type Controller interface {
 	GetApplications(w http.ResponseWriter, r *http.Request)
 }
