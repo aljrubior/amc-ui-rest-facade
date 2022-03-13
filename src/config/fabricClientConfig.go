@@ -1,11 +1,19 @@
 package config
 
+import (
+	"fmt"
+	"github.com/aljrubior/amc-ui-rest-facade/utils/getenvs"
+)
+
 func NewFabricConfigClient() FabricConfigClient {
+
+	basePath := getenvs.GetString("AM_REST_PATH", "/api/v2")
+
 	return FabricConfigClient{
-		Protocol:        "http",
-		Host:            "application-manager-service.arm.svc",
-		Port:            "8080",
-		DeploymentsPath: "/api/v2/organizations/%s/environments/%s/deployments",
+		Protocol:        getenvs.GetString("AM_REST_PROTOCOL", "http"),
+		Host:            getenvs.GetString("AM_REST_HOST", ""),
+		Port:            getenvs.GetString("AM_REST_PORT", "8080"),
+		DeploymentsPath: fmt.Sprintf("%s%s", basePath, "/api/v2/organizations/%s/environments/%s/deployments"),
 	}
 }
 

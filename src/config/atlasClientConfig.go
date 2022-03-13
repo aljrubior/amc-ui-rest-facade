@@ -1,11 +1,19 @@
 package config
 
+import (
+	"fmt"
+	"github.com/aljrubior/amc-ui-rest-facade/utils/getenvs"
+)
+
 func NewAtlasConfigClient() AtlasConfigClient {
+
+	basePath := getenvs.GetString("ATLAS_REST_PATH", "/api/v1")
+
 	return AtlasConfigClient{
-		Protocol:    "http",
-		Host:        "atlas.amc.svc",
-		Port:        "8080",
-		TargetsPath: "/organizations/%s/providers/%s/targets",
+		Protocol:    getenvs.GetString("ATLAS_REST_PROTOCOL", "http"),
+		Host:        getenvs.GetString("ATLAS_REST_HOST", ""),
+		Port:        getenvs.GetString("ATLAS_REST_PORT", "8080"),
+		TargetsPath: fmt.Sprintf("%s%s", basePath, "/organizations/%s/providers/%s/targets"),
 	}
 }
 

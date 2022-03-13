@@ -2,7 +2,7 @@ package hybrid
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/applicationManagerV1/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/requests"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"io/ioutil"
 	"net/http"

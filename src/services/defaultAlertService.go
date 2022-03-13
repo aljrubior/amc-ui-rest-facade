@@ -12,24 +12,24 @@ const (
 )
 
 func NewDefaultAlertService(
-	applicationManagerV1Service ApplicationManagerV1Service,
+	hybridService HybridService,
 	cloudhubService CloudhubService) DefaultAlertService {
 
 	return DefaultAlertService{
-		applicationManagerV1Service: applicationManagerV1Service,
-		cloudhubService:             cloudhubService,
+		hybridService:   hybridService,
+		cloudhubService: cloudhubService,
 	}
 }
 
 type DefaultAlertService struct {
-	applicationManagerV1Service ApplicationManagerV1Service
-	cloudhubService             CloudhubService
+	hybridService   HybridService
+	cloudhubService CloudhubService
 }
 
 func (service DefaultAlertService) GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error) {
 	var alerts []alerts.AlertResponse
 
-	resp, err := service.applicationManagerV1Service.GetAlerts(token, orgId, envId)
+	resp, err := service.hybridService.GetAlerts(token, orgId, envId)
 
 	if err != nil {
 		// Log Error
@@ -52,7 +52,7 @@ func (service DefaultAlertService) PostAlert(token, orgId, envId, product string
 
 	if product == HYBRID_PRODUCT {
 
-		return service.applicationManagerV1Service.PostAlert(token, orgId, envId, request)
+		return service.hybridService.PostAlert(token, orgId, envId, request)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
@@ -67,7 +67,7 @@ func (t DefaultAlertService) GetSingleAlert(token, orgId, envId, product, alertI
 
 	if product == HYBRID_PRODUCT {
 
-		return t.applicationManagerV1Service.GetSingleAlert(token, orgId, envId, alertId)
+		return t.hybridService.GetSingleAlert(token, orgId, envId, alertId)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
@@ -82,7 +82,7 @@ func (t DefaultAlertService) UpdateAlert(token, orgId, envId, product, alertId s
 
 	if product == HYBRID_PRODUCT {
 
-		return t.applicationManagerV1Service.UpdateSingleAlert(token, orgId, envId, alertId, request)
+		return t.hybridService.UpdateSingleAlert(token, orgId, envId, alertId, request)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
@@ -97,7 +97,7 @@ func (t DefaultAlertService) DeleteSingleAlert(token, orgId, envId, product, ale
 
 	if product == HYBRID_PRODUCT {
 
-		return t.applicationManagerV1Service.DeleteSingleAlert(token, orgId, envId, alertId)
+		return t.hybridService.DeleteSingleAlert(token, orgId, envId, alertId)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
@@ -114,7 +114,7 @@ func (t DefaultAlertService) GetAlertHistory(token, orgId, envId, product, alert
 
 	if product == HYBRID_PRODUCT {
 
-		return t.applicationManagerV1Service.GetAlertHistory(token, orgId, envId, alertId)
+		return t.hybridService.GetAlertHistory(token, orgId, envId, alertId)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
@@ -129,7 +129,7 @@ func (t DefaultAlertService) GetResourceAlertHistory(token, orgId, envId, produc
 
 	if product == HYBRID_PRODUCT {
 
-		return t.applicationManagerV1Service.GetResourceAlertHistory(token, orgId, envId, resourceId)
+		return t.hybridService.GetResourceAlertHistory(token, orgId, envId, resourceId)
 	}
 
 	if product == CLOUDHUB_PRODUCT {
