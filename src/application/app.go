@@ -13,6 +13,13 @@ import (
 	"net/http"
 )
 
+func NewApp() *App {
+	app := App{}
+	app.Initialize()
+
+	return &app
+}
+
 type App struct {
 	Router *mux.Router
 
@@ -25,7 +32,9 @@ type App struct {
 	userController        userController.UserController
 }
 
-func (app *App) Initialize() {
+func (t *App) Initialize() {
+	t.healthController = healthController.NewDefaultHealthController()
+	t.initializeRoutes()
 }
 
 func (app *App) Run(addr string) {

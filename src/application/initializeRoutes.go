@@ -1,26 +1,30 @@
 package application
 
-func (app *App) initializeRoutes() {
+import "github.com/gorilla/mux"
 
-	app.Router.HandleFunc("/applications", app.applicationController.GetApplications).Methods("GET")
+func (t *App) initializeRoutes() {
 
-	app.Router.HandleFunc("/targets", app.targetController.GetTargets).Methods("GET")
+	t.Router = mux.NewRouter().StrictSlash(true)
 
-	app.Router.HandleFunc("/servers", app.serverController.GetServers).Methods("GET")
+	//t.Router.HandleFunc("/applications", t.applicationController.GetApplications).Methods("GET")
+	//
+	//t.Router.HandleFunc("/targets", t.targetController.GetTargets).Methods("GET")
+	//
+	//t.Router.HandleFunc("/servers", t.serverController.GetServers).Methods("GET")
+	//
+	//t.Router.HandleFunc("/permissions", t.permissionController.GetPermissions).Methods("GET")
+	//
+	//t.Router.HandleFunc("/users", t.userController.GetUsers).Methods("GET")
+	//
+	//t.Router.HandleFunc("/alerts", t.alertController.GetAlerts).Methods("GET")
+	//t.Router.HandleFunc("/alerts/{productId}", t.alertController.PostAlert).Methods("POST")
+	//t.Router.HandleFunc("/alerts/{productId}/{alertId}", t.alertController.GetAlert).Methods("GET")
+	//t.Router.HandleFunc("/alerts/{productId}/{alertId}", t.alertController.PatchAlert).Methods("PATCH")
+	//t.Router.HandleFunc("/alerts/{productId}/{alertId}", t.alertController.PutAlert).Methods("PUT")
+	//t.Router.HandleFunc("/alerts/{productId}/{alertId}", t.alertController.DeleteAlert).Methods("DELETE")
+	//t.Router.HandleFunc("/alerts/{productId}/{alertId}/history", t.alertController.GetAlertHistory).Methods("GET")
+	//t.Router.HandleFunc("/alerts/{productId}/resource/{resourceId}/history", t.alertController.GetResourceHistory).Methods("GET")
 
-	app.Router.HandleFunc("/permissions", app.permissionController.GetPermissions).Methods("GET")
-
-	app.Router.HandleFunc("/users", app.userController.GetUsers).Methods("GET")
-
-	app.Router.HandleFunc("/alerts", app.alertController.GetAlerts).Methods("GET")
-	app.Router.HandleFunc("/alerts/{productId}", app.alertController.PostAlert).Methods("POST")
-	app.Router.HandleFunc("/alerts/{productId}/{alertId}", app.alertController.GetAlert).Methods("GET")
-	app.Router.HandleFunc("/alerts/{productId}/{alertId}", app.alertController.PatchAlert).Methods("PATCH")
-	app.Router.HandleFunc("/alerts/{productId}/{alertId}", app.alertController.PutAlert).Methods("PUT")
-	app.Router.HandleFunc("/alerts/{productId}/{alertId}", app.alertController.DeleteAlert).Methods("DELETE")
-	app.Router.HandleFunc("/alerts/{productId}/{alertId}/history", app.alertController.GetAlertHistory).Methods("GET")
-	app.Router.HandleFunc("/alerts/{productId}/resource/{resourceId}/history", app.alertController.GetResourceHistory).Methods("GET")
-
-	app.Router.HandleFunc("/ping", app.healthController.GetPing).Methods("PUT")
-	app.Router.HandleFunc("/info", app.healthController.GetInfo).Methods("DELETE")
+	t.Router.HandleFunc("/ping", t.healthController.GetPing).Methods("GET")
+	t.Router.HandleFunc("/info", t.healthController.GetInfo).Methods("GET")
 }
