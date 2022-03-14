@@ -6,13 +6,13 @@ package wires
 import (
 	hybridHttpClient "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
 	hybridService "github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
 	"github.com/google/wire"
 )
 
-func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (datasources.ApplicationDatasource, error) {
+func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (applications.ApplicationDatasource, error) {
 
 	wire.Build(
 		hybridHttpClient.NewDefaultHttpClient,
@@ -20,7 +20,7 @@ func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfi
 		hybrid.NewDatasource,
 		wire.Bind(new(hybridHttpClient.HttpClient), new(hybridHttpClient.DefaultHttpClient)),
 		wire.Bind(new(hybridService.Service), new(hybridService.DefaultService)),
-		wire.Bind(new(datasources.ApplicationDatasource), new(hybrid.Datasource)),
+		wire.Bind(new(applications.ApplicationDatasource), new(hybrid.Datasource)),
 	)
 
 	return hybrid.Datasource{}, nil

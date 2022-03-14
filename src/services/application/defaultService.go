@@ -1,7 +1,7 @@
 package application
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
 	"sync"
 )
 
@@ -11,7 +11,7 @@ var (
 	instance *DefaultService
 )
 
-func NewDefaultService(datasources []datasources.ApplicationDatasource) DefaultService {
+func NewDefaultService(datasources []applications.ApplicationDatasource) DefaultService {
 
 	lock.Lock()
 	defer lock.Unlock()
@@ -26,5 +26,5 @@ func NewDefaultService(datasources []datasources.ApplicationDatasource) DefaultS
 }
 
 type DefaultService struct {
-	datasources []datasources.ApplicationDatasource
+	datasources []applications.ApplicationDatasource
 }

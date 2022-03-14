@@ -1,4 +1,4 @@
-package datasources
+package applications
 
 import "github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
 
