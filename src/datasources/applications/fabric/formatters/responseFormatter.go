@@ -5,9 +5,9 @@ import (
 	responses2 "github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement/responses"
 )
 
-func NewDeploymentResponseFormatter(
+func NewResponseFormatter(
 	deployments *[]responses.DeploymentResponse,
-	targets *[]responses2.TargetResponse) DeploymentResponseFormatter {
+	targets *[]responses2.TargetResponse) ResponseFormatter {
 
 	if targets == nil {
 		targets = new([]responses2.TargetResponse)
@@ -23,13 +23,13 @@ func NewDeploymentResponseFormatter(
 		mapTargets[t.Id] = t
 	}
 
-	return DeploymentResponseFormatter{
+	return ResponseFormatter{
 		deployments: deployments,
 		mapTargets:  mapTargets,
 	}
 }
 
-type DeploymentResponseFormatter struct {
+type ResponseFormatter struct {
 	deployments *[]responses.DeploymentResponse
 	mapTargets  map[string]responses2.TargetResponse
 }

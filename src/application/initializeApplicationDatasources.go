@@ -20,7 +20,7 @@ func (t *App) initializeApplicationDatasources() {
 		panic("Error: initializeApplicationContext dependency injection failed")
 	}
 
-	// t.applicationDatasources = append(t.applicationDatasources, datasource)
+	t.applicationDatasources = append(t.applicationDatasources, datasource)
 
 	datasource, err = wires.InitializeFabricApplicationDatasource(fabricClientConfig, runtimeFabricManagementClientConfig)
 

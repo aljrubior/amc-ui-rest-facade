@@ -14,8 +14,9 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
+	cloudhub3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub"
 	fabric3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric"
+	hybrid3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
 	application2 "github.com/aljrubior/amc-ui-rest-facade/services/application"
 	cloudhub2 "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
@@ -36,8 +37,8 @@ func InitializeApplicationController(datasources2 []datasources.ApplicationDatas
 func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (datasources.ApplicationDatasource, error) {
 	defaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
 	defaultService := cloudhub2.NewDefaultService(defaultHttpClient)
-	cloudhubApplicationDatasource := applications.NewCloudhubApplicationDatasource(defaultService)
-	return cloudhubApplicationDatasource, nil
+	datasource := cloudhub3.NewDatasource(defaultService)
+	return datasource, nil
 }
 
 // Injectors from initializeFabricApplicationDatasource.go:
@@ -47,8 +48,8 @@ func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfi
 	defaultService := fabric2.NewDefaultService(defaultHttpClient)
 	runtimeFabricManagementDefaultHttpClient := runtimeFabricManagement.NewDefaultHttpClient(runtimeFabricManagementClientConfig)
 	runtimeFabricManagementDefaultService := runtimeFabricManagement2.NewDefaultService(runtimeFabricManagementDefaultHttpClient)
-	fabricApplicationDatasource := fabric3.NewFabricApplicationDatasource(defaultService, runtimeFabricManagementDefaultService)
-	return fabricApplicationDatasource, nil
+	datasource := fabric3.NewDatasource(defaultService, runtimeFabricManagementDefaultService)
+	return datasource, nil
 }
 
 // Injectors from initializeHybridApplicationDatasource.go:
@@ -56,6 +57,6 @@ func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfi
 func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (datasources.ApplicationDatasource, error) {
 	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
 	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
-	hybridApplicationDatasource := applications.NewHybridApplicationDatasource(defaultService)
-	return hybridApplicationDatasource, nil
+	datasource := hybrid3.NewDatasource(defaultService)
+	return datasource, nil
 }

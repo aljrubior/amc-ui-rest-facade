@@ -12,7 +12,7 @@ func NewHybridConfigClient() HybridConfigClient {
 	return HybridConfigClient{
 		Protocol:                 getenvs.GetString("AMC_REST_PROTOCOL", "http"),
 		Host:                     getenvs.GetString("AMC_REST_HOST", ""),
-		Port:                     getenvs.GetString("AM_REST_PORT", "8080"),
+		Port:                     getenvs.GetString("AMC_REST_PORT", "8080"),
 		AlertsPath:               fmt.Sprintf("%s%s", basePath, "/alerts"),
 		AlertPath:                fmt.Sprintf("%s%s", basePath, "/alerts/%s"),
 		AlertHistoryPath:         fmt.Sprintf("%s%s", basePath, "/alerts/%s/history"),

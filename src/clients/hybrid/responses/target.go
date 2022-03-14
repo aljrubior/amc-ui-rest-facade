@@ -17,4 +17,5 @@ type Target struct {
 	Status                    string                    `json:"status"`
 	Addresses                 []common.Address          `json:"addresses"`
 	RuntimeInformation        common.RuntimeInformation `json:"runtimeInformation"`
+	Servers                   []common.Server           `json:"servers"`
 }

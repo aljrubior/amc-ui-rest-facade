@@ -5,16 +5,16 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
 )
 
-func NewFabricApplicationDatasource(
+func NewDatasource(
 	fabricService fabric.Service,
-	runtimeFabricManagementService runtimeFabricManagement.Service) FabricApplicationDatasource {
-	return FabricApplicationDatasource{
+	runtimeFabricManagementService runtimeFabricManagement.Service) Datasource {
+	return Datasource{
 		fabricService:                  fabricService,
 		runtimeFabricManagementService: runtimeFabricManagementService,
 	}
 }
 
-type FabricApplicationDatasource struct {
+type Datasource struct {
 	fabricService                  fabric.Service
 	runtimeFabricManagementService runtimeFabricManagement.Service
 }

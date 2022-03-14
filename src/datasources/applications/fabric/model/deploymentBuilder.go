@@ -3,6 +3,7 @@ package model
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
 	responses2 "github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement/responses"
+	"strings"
 )
 
 func NewDeploymentBuilder(
@@ -36,7 +37,7 @@ func (t DeploymentBuilder) Build() Deployment {
 			Provider: t.deployment.Target.Provider,
 			Id:       t.target.Id,
 			Name:     targetName,
-			Status:   t.target.Status,
+			Status:   strings.ToUpper(t.target.Status),
 		},
 		Artifact: Artifact{
 			LastUpdateTime: t.deployment.LastModifiedDate,

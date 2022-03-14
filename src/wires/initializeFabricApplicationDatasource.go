@@ -23,13 +23,13 @@ func InitializeFabricApplicationDatasource(
 		runtimeFabricManagement.NewDefaultHttpClient,
 		fabricService.NewDefaultService,
 		runtimeFabricManagementService.NewDefaultService,
-		fabric.NewFabricApplicationDatasource,
+		fabric.NewDatasource,
 		wire.Bind(new(fabricHttpClient.HttpClient), new(fabricHttpClient.DefaultHttpClient)),
 		wire.Bind(new(runtimeFabricManagement.HttpClient), new(runtimeFabricManagement.DefaultHttpClient)),
 		wire.Bind(new(fabricService.Service), new(fabricService.DefaultService)),
 		wire.Bind(new(runtimeFabricManagementService.Service), new(runtimeFabricManagementService.DefaultService)),
-		wire.Bind(new(datasources.ApplicationDatasource), new(fabric.FabricApplicationDatasource)),
+		wire.Bind(new(datasources.ApplicationDatasource), new(fabric.Datasource)),
 	)
 
-	return fabric.FabricApplicationDatasource{}, nil
+	return fabric.Datasource{}, nil
 }

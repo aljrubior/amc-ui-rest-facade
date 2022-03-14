@@ -6,7 +6,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
 )
 
-func (t FabricApplicationDatasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {
+func (t Datasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {
 
 	deployments, err := t.fabricService.GetDeployments(token, orgId, envId)
 
@@ -20,8 +20,8 @@ func (t FabricApplicationDatasource) GetApplications(token, orgId, envId string)
 		return nil, err
 	}
 
-	formatterResult := formatters.NewDeploymentResponseFormatter(deployments, targets).Format()
+	formatterResult := formatters.NewResponseFormatter(deployments, targets).Format()
 
-	return transformers.NewFabricApplicationTransformer(formatterResult).Transform(), nil
+	return transformers.NewDefaultTransformer(formatterResult).Transform(), nil
 
 }

@@ -1,10 +1,12 @@
 package formatters
 
-import "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric/formatters/model"
+import (
+	model2 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric/model"
+)
 
-func (t DeploymentResponseFormatter) Format() *[]model.Deployment {
+func (t ResponseFormatter) Format() *[]model2.Deployment {
 
-	var data []model.Deployment
+	var data []model2.Deployment
 
 	for _, d := range *t.deployments {
 
@@ -13,8 +15,8 @@ func (t DeploymentResponseFormatter) Format() *[]model.Deployment {
 		if !exists {
 			continue
 		}
-		
-		data = append(data, model.NewDeploymentBuilder(&d, &target).Build())
+
+		data = append(data, model2.NewDeploymentBuilder(&d, &target).Build())
 	}
 
 	return &data

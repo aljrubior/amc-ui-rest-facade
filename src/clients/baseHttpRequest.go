@@ -23,7 +23,7 @@ func (_ *BaseHttpRequest) AddContentType(req *http.Request, contentType string) 
 
 func (this *BaseHttpRequest) AddAuthorizationHeader(req *http.Request, token string) {
 
-	req.Header.Add("Authorization", this.GetBearerTokenValue(token))
+	req.Header.Add("Authorization", token)
 }
 
 func (this *BaseHttpRequest) AddDefaultHeaders(req *http.Request, orgId, envId, token string) {
