@@ -11,6 +11,12 @@ func (t *App) initializeControllers() {
 	t.applicationController, err = wires.InitializeApplicationController(t.applicationDatasources)
 
 	if err != nil {
-		panic("Error: ApplicationController dependency injection failed")
+		panic("Error: Application Controller dependency injection failed")
+	}
+
+	t.targetController, err = wires.InitializeTargetController(t.targetDatasources)
+
+	if err != nil {
+		panic("Error: Target Controller dependency injection failed")
 	}
 }

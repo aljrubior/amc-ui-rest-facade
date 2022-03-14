@@ -29,5 +29,4 @@ func (t *App) initializeApplicationDatasources() {
 	}
 
 	t.applicationDatasources = append(t.applicationDatasources, datasource)
-
 }

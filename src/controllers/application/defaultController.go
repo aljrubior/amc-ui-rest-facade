@@ -8,27 +8,20 @@ import (
 var lock = &sync.Mutex{}
 
 var (
-	instance DefaultController
+	instance *DefaultController
 )
 
-func NewDefaultService(applicationService application.Service) DefaultController {
+func NewDefaultController(applicationService application.Service) DefaultController {
 
 	lock.Lock()
 	defer lock.Unlock()
 
-	if &instance == nil {
-		instance = DefaultController{
+	if instance == nil {
+		instance = &DefaultController{
 			applicationService: applicationService,
 		}
 	}
-	return instance
-}
-
-func NewDefaultController(applicationService application.Service) DefaultController {
-
-	return DefaultController{
-		applicationService: applicationService,
-	}
+	return *instance
 }
 
 type DefaultController struct {
