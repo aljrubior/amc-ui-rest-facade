@@ -20,6 +20,7 @@ import (
 	hybrid3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
 	cloudhub4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/cloudhub"
+	hybrid4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid"
 	application2 "github.com/aljrubior/amc-ui-rest-facade/services/application"
 	cloudhub2 "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
@@ -79,5 +80,14 @@ func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfi
 	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
 	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
 	datasource := hybrid3.NewDatasource(defaultService)
+	return datasource, nil
+}
+
+// Injectors from initializeHybridTargetDatasource.go:
+
+func InitializeHybridTargetDatasource(hybridConfigClient config.HybridConfigClient) (targets.TargetDatasource, error) {
+	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
+	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
+	datasource := hybrid4.NewDatasource(defaultService)
 	return datasource, nil
 }

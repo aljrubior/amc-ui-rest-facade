@@ -1,5 +1,5 @@
 package cluster
 
 type VisibilityMap struct {
-	MapNodes []Node `json:"mapNodes"`
+	MapNodes []Node `json:"mapNodes,omitempty"`
 }

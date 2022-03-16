@@ -16,7 +16,9 @@ type Server struct {
 	Addresses                 []Address          `json:"addresses"`
 	ClusterId                 int                `json:"clusterId,omitempty"`
 	ClusterName               string             `json:"clusterName"`
-	CurrentClusteringIp       string             `json:"currentClusteringIp"`
+	ServerGroupId             int                `json:"serverGroupId,omitempty"`
+	ServerGroupName           string             `json:"serverGroupName,omitempty"`
+	CurrentClusteringIp       string             `json:"CurrentClusteringIp"`
 	CurrentClusteringPort     int                `json:"currentClusteringPort"`
 	RuntimeInformation        RuntimeInformation `json:"runtimeInformation"`
 }

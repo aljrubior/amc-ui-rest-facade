@@ -7,9 +7,16 @@ func (t *App) initializeTargetDatasources() {
 	datasource, err := wires.InitializeCloudhubTargetDatasource(cloudhubClientConfig)
 
 	if err != nil {
-		panic("Error: initializeApplicationContext dependency injection failed")
+		panic("Error: InitializeTargetDatasources dependency injection failed: Cloudhub")
 	}
 
 	t.targetDatasources = append(t.targetDatasources, datasource)
 
+	datasource, err = wires.InitializeHybridTargetDatasource(hybridClientConfig)
+
+	if err != nil {
+		panic("Error: InitializeTargetDatasources dependency injection failed: Hybrid")
+	}
+
+	t.targetDatasources = append(t.targetDatasources, datasource)
 }
