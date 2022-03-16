@@ -1,4 +1,4 @@
-package target
+package server
 
 import (
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"

@@ -1,6 +1,7 @@
 package application
 
 import (
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
 	"github.com/aljrubior/amc-ui-rest-facade/wires"
 )
 
@@ -18,5 +19,11 @@ func (t *App) initializeControllers() {
 
 	if err != nil {
 		panic("Error: Target Controller dependency injection failed")
+	}
+
+	t.serverController, err = wires.InitializeServerController([]targets.Datasource{hybridDatasource})
+
+	if err != nil {
+		panic("Error: Server Controller dependency injection failed")
 	}
 }

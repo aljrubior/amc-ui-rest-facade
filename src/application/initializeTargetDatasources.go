@@ -12,11 +12,11 @@ func (t *App) initializeTargetDatasources() {
 
 	t.targetDatasources = append(t.targetDatasources, datasource)
 
-	datasource, err = wires.InitializeHybridTargetDatasource(hybridClientConfig)
+	hybridDatasource, err = wires.InitializeHybridTargetDatasource(hybridClientConfig)
 
 	if err != nil {
 		panic("Error: InitializeTargetDatasources dependency injection failed: Hybrid")
 	}
 
-	t.targetDatasources = append(t.targetDatasources, datasource)
+	t.targetDatasources = append(t.targetDatasources, hybridDatasource)
 }

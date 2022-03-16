@@ -13,6 +13,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/server"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/target"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
 	cloudhub3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub"
@@ -26,12 +27,13 @@ import (
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
 	hybrid2 "github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
 	runtimeFabricManagement2 "github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
+	server2 "github.com/aljrubior/amc-ui-rest-facade/services/server"
 	target2 "github.com/aljrubior/amc-ui-rest-facade/services/target"
 )
 
 // Injectors from InitializeTargetController.go:
 
-func InitializeTargetController(datasources []targets.TargetDatasource) (target.Controller, error) {
+func InitializeTargetController(datasources []targets.Datasource) (target.Controller, error) {
 	defaultService := target2.NewDefaultService(datasources)
 	defaultController := target.NewDefaultController(defaultService)
 	return defaultController, nil
@@ -56,7 +58,7 @@ func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigC
 
 // Injectors from initializeCloudhubTargetDatasource.go:
 
-func InitializeCloudhubTargetDatasource(configClient config.CloudhubConfigClient) (targets.TargetDatasource, error) {
+func InitializeCloudhubTargetDatasource(configClient config.CloudhubConfigClient) (targets.Datasource, error) {
 	defaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
 	defaultService := cloudhub2.NewDefaultService(defaultHttpClient)
 	datasource := cloudhub4.NewDatasource(defaultService)
@@ -85,9 +87,17 @@ func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfi
 
 // Injectors from initializeHybridTargetDatasource.go:
 
-func InitializeHybridTargetDatasource(hybridConfigClient config.HybridConfigClient) (targets.TargetDatasource, error) {
+func InitializeHybridTargetDatasource(hybridConfigClient config.HybridConfigClient) (targets.Datasource, error) {
 	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
 	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
 	datasource := hybrid4.NewDatasource(defaultService)
 	return datasource, nil
+}
+
+// Injectors from initializeServerController.go:
+
+func InitializeServerController(datasources []targets.Datasource) (server.Controller, error) {
+	defaultService := server2.NewDefaultService(datasources)
+	defaultController := server.NewDefaultController(defaultService)
+	return defaultController, nil
 }

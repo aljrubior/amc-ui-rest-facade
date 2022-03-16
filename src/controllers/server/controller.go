@@ -1,7 +1,7 @@
-package serverController
+package server
 
 import "net/http"
 
-type ServerController interface {
+type Controller interface {
 	GetServers(w http.ResponseWriter, r *http.Request)
 }

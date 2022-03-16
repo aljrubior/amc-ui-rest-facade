@@ -12,7 +12,7 @@ import (
 	"github.com/google/wire"
 )
 
-func InitializeCloudhubTargetDatasource(configClient config.CloudhubConfigClient) (targets.TargetDatasource, error) {
+func InitializeCloudhubTargetDatasource(configClient config.CloudhubConfigClient) (targets.Datasource, error) {
 
 	wire.Build(
 		cloudhubHttpClient.NewDefaultHttpClient,
@@ -20,7 +20,7 @@ func InitializeCloudhubTargetDatasource(configClient config.CloudhubConfigClient
 		cloudhub.NewDatasource,
 		wire.Bind(new(cloudhubHttpClient.HttpClient), new(cloudhubHttpClient.DefaultHttpClient)),
 		wire.Bind(new(cloudhubService.Service), new(cloudhubService.DefaultService)),
-		wire.Bind(new(targets.TargetDatasource), new(cloudhub.Datasource)),
+		wire.Bind(new(targets.Datasource), new(cloudhub.Datasource)),
 	)
 
 	return cloudhub.Datasource{}, nil

@@ -5,7 +5,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/health"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/permissionController"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/serverController"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/server"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/target"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/userController"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
@@ -28,13 +28,13 @@ type App struct {
 	alertController       alertController.AlertController
 	applicationController application.Controller
 	healthController      health.Controller
-	serverController      serverController.ServerController
+	serverController      server.Controller
 	targetController      target.Controller
 	permissionController  permissionController.PermissionController
 	userController        userController.UserController
 
 	applicationDatasources []applications.ApplicationDatasource
-	targetDatasources      []targets.TargetDatasource
+	targetDatasources      []targets.Datasource
 }
 
 func (t *App) Initialize() {
