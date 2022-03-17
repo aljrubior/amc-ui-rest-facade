@@ -6,12 +6,12 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/server"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/serverGroup"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert/requests"
 )
 
 type Service interface {
 	GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error)
-	GetSingleAlert(token, orgId, envId, alertId string) (*[]alerts.AlertResponse, error)
+	GetSingleAlert(token, orgId, envId, alertId string) (*alerts.AlertResponse, error)
 	UpdateSingleAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error)
 	CreateAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error)
 	DeleteSingleAlert(token, orgId, envId, alertId string) error

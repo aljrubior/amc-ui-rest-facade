@@ -1,7 +1,7 @@
 package application
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/health"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/permissionController"
@@ -25,7 +25,7 @@ func NewApp() *App {
 type App struct {
 	Router *mux.Router
 
-	alertController       alertController.AlertController
+	alertController       alert.Controller
 	applicationController application.Controller
 	healthController      health.Controller
 	serverController      server.Controller

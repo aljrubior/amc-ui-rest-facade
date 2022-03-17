@@ -3,7 +3,7 @@ package hybrid
 import (
 	"encoding/json"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/alertController/requests"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert/requests"
 )
 
 func (t DefaultService) UpdateSingleAlert(token, orgId, envId, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {

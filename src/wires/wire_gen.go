@@ -12,6 +12,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/config"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/server"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/target"
@@ -22,6 +23,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
 	cloudhub4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/cloudhub"
 	hybrid4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid"
+	alert2 "github.com/aljrubior/amc-ui-rest-facade/services/alert"
 	application2 "github.com/aljrubior/amc-ui-rest-facade/services/application"
 	cloudhub2 "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
@@ -36,6 +38,18 @@ import (
 func InitializeTargetController(datasources []targets.Datasource) (target.Controller, error) {
 	defaultService := target2.NewDefaultService(datasources)
 	defaultController := target.NewDefaultController(defaultService)
+	return defaultController, nil
+}
+
+// Injectors from initializeAlertController.go:
+
+func InitializeAlertController(hybridConfigClient config.HybridConfigClient, configClient config.CloudhubConfigClient) (alert.Controller, error) {
+	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
+	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
+	cloudhubDefaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
+	cloudhubDefaultService := cloudhub2.NewDefaultService(cloudhubDefaultHttpClient)
+	alertDefaultService := alert2.NewDefaultService(defaultService, cloudhubDefaultService)
+	defaultController := alert.NewDefaultController(alertDefaultService)
 	return defaultController, nil
 }
 
