@@ -8,4 +8,5 @@ func (t *App) initializeConfigClient() {
 	cloudhubClientConfig = config.NewCloudhubConfigClient()
 	fabricClientConfig = config.NewFabricConfigClient()
 	runtimeFabricManagementClientConfig = config.NewRuntimeFabricManagementClientConfig()
+	coreServiceConfigClient = config.NewAccessManagementConfigClient()
 }

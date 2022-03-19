@@ -7,6 +7,7 @@
 package wires
 
 import (
+	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
@@ -14,20 +15,26 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/config"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/application"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/permission"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/server"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/target"
+	"github.com/aljrubior/amc-ui-rest-facade/controllers/user"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
 	cloudhub3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub"
 	fabric3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric"
 	hybrid3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions"
+	accessManagement3 "github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
 	cloudhub4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/cloudhub"
 	hybrid4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid"
+	accessManagement2 "github.com/aljrubior/amc-ui-rest-facade/services/accessManagement"
 	alert2 "github.com/aljrubior/amc-ui-rest-facade/services/alert"
 	application2 "github.com/aljrubior/amc-ui-rest-facade/services/application"
 	cloudhub2 "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 	fabric2 "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
 	hybrid2 "github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
+	permission2 "github.com/aljrubior/amc-ui-rest-facade/services/permission"
 	runtimeFabricManagement2 "github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
 	server2 "github.com/aljrubior/amc-ui-rest-facade/services/server"
 	target2 "github.com/aljrubior/amc-ui-rest-facade/services/target"
@@ -108,10 +115,36 @@ func InitializeHybridTargetDatasource(hybridConfigClient config.HybridConfigClie
 	return datasource, nil
 }
 
+// Injectors from initializePermissionController.go:
+
+func InitializePermissionController(datasource permissions.Datasource) (permission.Controller, error) {
+	defaultService := permission2.NewDefaultService(datasource)
+	defaultController := permission.NewDefaultController(defaultService)
+	return defaultController, nil
+}
+
+// Injectors from initializePermissionDatasource.go:
+
+func InitializePermissionDatasource(accessManagementConfigClient config.AccessManagementConfigClient) (permissions.Datasource, error) {
+	defaultHttpClient := accessManagement.NewDefaultHttpClient(accessManagementConfigClient)
+	defaultService := accessManagement2.NewDefaultService(defaultHttpClient)
+	defaultDatasource := accessManagement3.NewDefaultDatasource(defaultService)
+	return defaultDatasource, nil
+}
+
 // Injectors from initializeServerController.go:
 
 func InitializeServerController(datasources []targets.Datasource) (server.Controller, error) {
 	defaultService := server2.NewDefaultService(datasources)
 	defaultController := server.NewDefaultController(defaultService)
+	return defaultController, nil
+}
+
+// Injectors from initializeUserController.go:
+
+func InitializeUserController(coreServiceConfigClient config.AccessManagementConfigClient) (user.Controller, error) {
+	defaultHttpClient := accessManagement.NewDefaultHttpClient(coreServiceConfigClient)
+	defaultService := accessManagement2.NewDefaultService(defaultHttpClient)
+	defaultController := user.NewDefaultController(defaultService)
 	return defaultController, nil
 }

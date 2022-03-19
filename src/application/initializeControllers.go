@@ -32,4 +32,16 @@ func (t *App) initializeControllers() {
 	if err != nil {
 		panic("Error: Alert Controller dependency injection failed")
 	}
+
+	t.userController, err = wires.InitializeUserController(coreServiceConfigClient)
+
+	if err != nil {
+		panic("Error: User Controller dependency injection failed")
+	}
+
+	t.permissionController, err = wires.InitializePermissionController(t.permissionDatasource)
+
+	if err != nil {
+		panic("Error: Permission Controller dependency injection failed")
+	}
 }

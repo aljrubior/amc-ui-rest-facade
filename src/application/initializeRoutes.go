@@ -17,10 +17,8 @@ func (t *App) initializeRoutes() {
 	t.Router.HandleFunc("/alerts/{productId}/{alertId}/history", t.alertController.GetAlertHistory).Methods("GET")
 	t.Router.HandleFunc("/alerts/{productId}/resource/{resourceId}/history", t.alertController.GetResourceAlertHistory).Methods("GET")
 
-	//
-	//t.Router.HandleFunc("/permissions", t.permissionController.GetPermissions).Methods("GET")
-	//
-	//t.Router.HandleFunc("/users", t.userController.GetUsers).Methods("GET")
+	t.Router.HandleFunc("/users", t.userController.GetUsers).Methods("GET")
+	t.Router.HandleFunc("/permissions", t.permissionController.GetPermissions).Methods("GET")
 
 	t.Router.HandleFunc("/ping", t.healthController.GetPing).Methods("GET")
 	t.Router.HandleFunc("/info", t.healthController.GetInfo).Methods("GET")

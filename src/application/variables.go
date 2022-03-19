@@ -10,6 +10,7 @@ var (
 	cloudhubClientConfig                config.CloudhubConfigClient
 	fabricClientConfig                  config.FabricConfigClient
 	runtimeFabricManagementClientConfig config.RuntimeFabricManagementClientConfig
+	coreServiceConfigClient             config.AccessManagementConfigClient
 
 	cloudhubDatasource targets.Datasource
 	hybridDatasource   targets.Datasource

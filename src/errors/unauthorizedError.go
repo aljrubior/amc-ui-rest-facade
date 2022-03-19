@@ -13,6 +13,6 @@ type UnauthorizedError struct {
 	response *http.Response
 }
 
-func (this *UnauthorizedError) Error() string {
+func (this UnauthorizedError) Error() string {
 	return fmt.Sprintf("%s", this.response.Status)
 }

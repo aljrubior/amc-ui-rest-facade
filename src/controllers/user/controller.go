@@ -1,7 +1,7 @@
-package userController
+package user
 
 import "net/http"
 
-type UserController interface {
+type Controller interface {
 	GetUsers(w http.ResponseWriter, r *http.Request)
 }

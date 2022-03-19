@@ -1,7 +1,7 @@
-package permissionController
+package permission
 
 import "net/http"
 
-type PermissionController interface {
+type Controller interface {
 	GetPermissions(w http.ResponseWriter, r *http.Request)
 }
