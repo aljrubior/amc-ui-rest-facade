@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-func (client DefaultHttpClient) GetAlerts(token string) (*alerts.AlertsResponse, error) {
+func (t DefaultHttpClient) GetAlerts(token, orgId, envId string) (*alerts.AlertsResponse, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
-	req := requests.NewGetAlertsRequest(&client.config, token).Build()
+	req := requests.NewGetAlertsRequest(&t.config, token, orgId, envId).Build()
 
 	resp, err := httpClient.Do(req)
 
@@ -24,7 +24,7 @@ func (client DefaultHttpClient) GetAlerts(token string) (*alerts.AlertsResponse,
 	}
 
 	if resp.StatusCode != 200 {
-		return nil, client.ThrowError(resp)
+		return nil, t.ThrowError(resp)
 	}
 
 	data, err := ioutil.ReadAll(resp.Body)

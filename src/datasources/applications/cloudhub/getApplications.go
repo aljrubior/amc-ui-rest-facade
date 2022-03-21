@@ -6,7 +6,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
 )
 
-func (t Datasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {
+func (t DefaultDatasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {
 
 	resp, err := t.cloudhubService.GetApplications(token, orgId, envId)
 

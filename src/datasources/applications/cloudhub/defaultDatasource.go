@@ -4,12 +4,12 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
 )
 
-func NewDatasource(cloudhubService cloudhub.Service) Datasource {
-	return Datasource{
+func NewDefaultDatasource(cloudhubService cloudhub.Service) DefaultDatasource {
+	return DefaultDatasource{
 		cloudhubService: cloudhubService,
 	}
 }
 
-type Datasource struct {
+type DefaultDatasource struct {
 	cloudhubService cloudhub.Service
 }

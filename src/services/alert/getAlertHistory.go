@@ -2,22 +2,18 @@ package alert
 
 import (
 	"errors"
+	"fmt"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 )
 
 func (t DefaultService) GetAlertHistory(token, orgId, envId, product, alertId string) (*[]alerts.AlertHistoryResponse, error) {
 
-	var alerts []alerts.AlertHistoryResponse
+	datasource, ok := t.datasources[product]
 
-	if product == HYBRID_PRODUCT {
-
-		return t.hybridService.GetAlertHistory(token, orgId, envId, alertId)
+	if !ok {
+		// TODO: Implement this
+		return nil, errors.New(fmt.Sprintf("Alerts not supported for product '%s'", product))
 	}
 
-	if product == CLOUDHUB_PRODUCT {
-
-		return t.cloudhubService.GetAlertHistory(token, orgId, envId, alertId)
-	}
-
-	return &alerts, errors.New("//TODO: Implement this")
+	return datasource.GetAlertHistory(token, orgId, envId, alertId)
 }

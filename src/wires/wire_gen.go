@@ -19,15 +19,18 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/server"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/target"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/user"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
+	cloudhub3 "github.com/aljrubior/amc-ui-rest-facade/datasources/alerts/cloudhub"
+	hybrid3 "github.com/aljrubior/amc-ui-rest-facade/datasources/alerts/hybrid"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
-	cloudhub3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub"
+	cloudhub4 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub"
 	fabric3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric"
-	hybrid3 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
+	hybrid4 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions"
 	accessManagement3 "github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
-	cloudhub4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/cloudhub"
-	hybrid4 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid"
+	cloudhub5 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/cloudhub"
+	hybrid5 "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid"
 	accessManagement2 "github.com/aljrubior/amc-ui-rest-facade/services/accessManagement"
 	alert2 "github.com/aljrubior/amc-ui-rest-facade/services/alert"
 	application2 "github.com/aljrubior/amc-ui-rest-facade/services/application"
@@ -42,7 +45,7 @@ import (
 
 // Injectors from InitializeTargetController.go:
 
-func InitializeTargetController(datasources []targets.Datasource) (target.Controller, error) {
+func InitializeTargetController(datasources map[string]targets.Datasource) (target.Controller, error) {
 	defaultService := target2.NewDefaultService(datasources)
 	defaultController := target.NewDefaultController(defaultService)
 	return defaultController, nil
@@ -50,31 +53,36 @@ func InitializeTargetController(datasources []targets.Datasource) (target.Contro
 
 // Injectors from initializeAlertController.go:
 
-func InitializeAlertController(hybridConfigClient config.HybridConfigClient, configClient config.CloudhubConfigClient) (alert.Controller, error) {
-	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
-	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
-	cloudhubDefaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
-	cloudhubDefaultService := cloudhub2.NewDefaultService(cloudhubDefaultHttpClient)
-	alertDefaultService := alert2.NewDefaultService(defaultService, cloudhubDefaultService)
-	defaultController := alert.NewDefaultController(alertDefaultService)
+func InitializeAlertController(datasources map[string]alerts.Datasource) (alert.Controller, error) {
+	defaultService := alert2.NewDefaultService(datasources)
+	defaultController := alert.NewDefaultController(defaultService)
 	return defaultController, nil
 }
 
 // Injectors from initializeApplicationController.go:
 
-func InitializeApplicationController(datasources []applications.ApplicationDatasource) (application.Controller, error) {
+func InitializeApplicationController(datasources map[string]applications.Datasource) (application.Controller, error) {
 	defaultService := application2.NewDefaultService(datasources)
 	defaultController := application.NewDefaultController(defaultService)
 	return defaultController, nil
 }
 
-// Injectors from initializeCloudhubApplicationDatasource.go:
+// Injectors from initializeCloudhubAlertDatasource.go:
 
-func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (applications.ApplicationDatasource, error) {
+func InitializeCloudhubAlertDatasource(configClient config.CloudhubConfigClient) (alerts.Datasource, error) {
 	defaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
 	defaultService := cloudhub2.NewDefaultService(defaultHttpClient)
-	datasource := cloudhub3.NewDatasource(defaultService)
-	return datasource, nil
+	defaultDatasource := cloudhub3.NewDefaultDatasource(defaultService)
+	return defaultDatasource, nil
+}
+
+// Injectors from initializeCloudhubApplicationDatasource.go:
+
+func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigClient) (applications.Datasource, error) {
+	defaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
+	defaultService := cloudhub2.NewDefaultService(defaultHttpClient)
+	defaultDatasource := cloudhub4.NewDefaultDatasource(defaultService)
+	return defaultDatasource, nil
 }
 
 // Injectors from initializeCloudhubTargetDatasource.go:
@@ -82,13 +90,13 @@ func InitializeCloudhubApplicationDatasource(configClient config.CloudhubConfigC
 func InitializeCloudhubTargetDatasource(configClient config.CloudhubConfigClient) (targets.Datasource, error) {
 	defaultHttpClient := cloudhub.NewDefaultHttpClient(configClient)
 	defaultService := cloudhub2.NewDefaultService(defaultHttpClient)
-	datasource := cloudhub4.NewDatasource(defaultService)
+	datasource := cloudhub5.NewDatasource(defaultService)
 	return datasource, nil
 }
 
 // Injectors from initializeFabricApplicationDatasource.go:
 
-func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfigClient, runtimeFabricManagementClientConfig config.RuntimeFabricManagementClientConfig) (applications.ApplicationDatasource, error) {
+func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfigClient, runtimeFabricManagementClientConfig config.RuntimeFabricManagementClientConfig) (applications.Datasource, error) {
 	defaultHttpClient := fabric.NewDefaultHttpClient(fabricConfigClient)
 	defaultService := fabric2.NewDefaultService(defaultHttpClient)
 	runtimeFabricManagementDefaultHttpClient := runtimeFabricManagement.NewDefaultHttpClient(runtimeFabricManagementClientConfig)
@@ -97,12 +105,21 @@ func InitializeFabricApplicationDatasource(fabricConfigClient config.FabricConfi
 	return datasource, nil
 }
 
-// Injectors from initializeHybridApplicationDatasource.go:
+// Injectors from initializeHybridAlertDatasource.go:
 
-func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (applications.ApplicationDatasource, error) {
+func InitializeHybridAlertDatasource(hybridConfigClient config.HybridConfigClient) (alerts.Datasource, error) {
 	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
 	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
-	datasource := hybrid3.NewDatasource(defaultService)
+	defaultDatasource := hybrid3.NewDefaultDatasource(defaultService)
+	return defaultDatasource, nil
+}
+
+// Injectors from initializeHybridApplicationDatasource.go:
+
+func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (applications.Datasource, error) {
+	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
+	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
+	datasource := hybrid4.NewDatasource(defaultService)
 	return datasource, nil
 }
 
@@ -111,7 +128,7 @@ func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfi
 func InitializeHybridTargetDatasource(hybridConfigClient config.HybridConfigClient) (targets.Datasource, error) {
 	defaultHttpClient := hybrid.NewDefaultHttpClient(hybridConfigClient)
 	defaultService := hybrid2.NewDefaultService(defaultHttpClient)
-	datasource := hybrid4.NewDatasource(defaultService)
+	datasource := hybrid5.NewDatasource(defaultService)
 	return datasource, nil
 }
 

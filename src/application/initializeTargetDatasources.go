@@ -1,8 +1,13 @@
 package application
 
-import "github.com/aljrubior/amc-ui-rest-facade/wires"
+import (
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
+	"github.com/aljrubior/amc-ui-rest-facade/wires"
+)
 
 func (t *App) initializeTargetDatasources() {
+
+	t.targetDatasources = make(map[string]targets.Datasource)
 
 	datasource, err := wires.InitializeCloudhubTargetDatasource(cloudhubClientConfig)
 
@@ -10,13 +15,13 @@ func (t *App) initializeTargetDatasources() {
 		panic("Error: InitializeTargetDatasources dependency injection failed: Cloudhub")
 	}
 
-	t.targetDatasources = append(t.targetDatasources, datasource)
+	t.targetDatasources[CLOUDHUB_PRODUCT_NAME] = datasource
 
-	hybridDatasource, err = wires.InitializeHybridTargetDatasource(hybridClientConfig)
+	datasource, err = wires.InitializeHybridTargetDatasource(hybridClientConfig)
 
 	if err != nil {
 		panic("Error: InitializeTargetDatasources dependency injection failed: Hybrid")
 	}
 
-	t.targetDatasources = append(t.targetDatasources, hybridDatasource)
+	t.targetDatasources[HYBRID_PRODUCT_NAME] = datasource
 }

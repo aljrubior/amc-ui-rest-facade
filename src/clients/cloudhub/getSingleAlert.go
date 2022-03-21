@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func (t DefaultHttpClient) GetSingleAlert(token, orgId, envId, alertId string) (*alerts.AlertResponse, error) {
+func (t DefaultHttpClient) GetSingleAlert(token, orgId, envId, alertId string) (*alerts.Response, error) {
 
 	httpClient := &http.Client{Timeout: time.Duration(10) * time.Second}
 
@@ -33,7 +33,7 @@ func (t DefaultHttpClient) GetSingleAlert(token, orgId, envId, alertId string) (
 		return nil, err
 	}
 
-	var response alerts.AlertResponse
+	var response alerts.Response
 
 	err = json.Unmarshal(data, &response)
 

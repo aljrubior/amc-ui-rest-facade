@@ -16,7 +16,7 @@ import (
 
 func InitializeFabricApplicationDatasource(
 	fabricConfigClient config.FabricConfigClient,
-	runtimeFabricManagementClientConfig config.RuntimeFabricManagementClientConfig) (applications.ApplicationDatasource, error) {
+	runtimeFabricManagementClientConfig config.RuntimeFabricManagementClientConfig) (applications.Datasource, error) {
 
 	wire.Build(
 		fabricHttpClient.NewDefaultHttpClient,
@@ -28,7 +28,7 @@ func InitializeFabricApplicationDatasource(
 		wire.Bind(new(runtimeFabricManagement.HttpClient), new(runtimeFabricManagement.DefaultHttpClient)),
 		wire.Bind(new(fabricService.Service), new(fabricService.DefaultService)),
 		wire.Bind(new(runtimeFabricManagementService.Service), new(runtimeFabricManagementService.DefaultService)),
-		wire.Bind(new(applications.ApplicationDatasource), new(fabric.Datasource)),
+		wire.Bind(new(applications.Datasource), new(fabric.Datasource)),
 	)
 
 	return fabric.Datasource{}, nil

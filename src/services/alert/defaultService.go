@@ -1,8 +1,7 @@
 package alert
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
-	"github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
 	"sync"
 )
 
@@ -12,17 +11,14 @@ var (
 	instance *DefaultService
 )
 
-func NewDefaultService(
-	hybridService hybrid.Service,
-	cloudhubService cloudhub.Service) DefaultService {
+func NewDefaultService(datasources map[string]alerts.Datasource) DefaultService {
 
 	lock.Lock()
 	defer lock.Unlock()
 
 	if instance == nil {
 		instance = &DefaultService{
-			hybridService:   hybridService,
-			cloudhubService: cloudhubService,
+			datasources: datasources,
 		}
 	}
 
@@ -30,6 +26,5 @@ func NewDefaultService(
 }
 
 type DefaultService struct {
-	hybridService   hybrid.Service
-	cloudhubService cloudhub.Service
+	datasources map[string]alerts.Datasource
 }

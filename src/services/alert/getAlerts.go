@@ -1,25 +1,22 @@
 package alert
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
+import (
+	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
+)
 
-func (service DefaultService) GetAlerts(token, orgId, envId string) (*[]alerts.AlertResponse, error) {
-	var alerts []alerts.AlertResponse
+func (t DefaultService) GetAlerts(token, orgId, envId string) (*[]alerts.Response, error) {
+	var alerts []alerts.Response
 
-	resp, err := service.hybridService.GetAlerts(token, orgId, envId)
+	for _, v := range t.datasources {
 
-	if err != nil {
-		// Log Error
+		resp, err := v.GetAlerts(token, orgId, envId)
+
+		if err != nil {
+			// TODO: Log Error
+		}
+
+		alerts = append(alerts, *resp...)
 	}
-
-	alerts = append(alerts, *resp...)
-
-	resp, err = service.cloudhubService.GetAlerts(token)
-
-	if err != nil {
-		// Log Error
-	}
-
-	alerts = append(alerts, *resp...)
 
 	return &alerts, nil
 }

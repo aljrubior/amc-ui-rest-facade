@@ -6,8 +6,8 @@ import (
 )
 
 type HttpClient interface {
-	GetAlerts(token string) (*alerts.AlertsResponse, error)
-	GetSingleAlert(token, orgId, envId, alertId string) (*alerts.AlertResponse, error)
+	GetAlerts(token, orgId, envId string) (*alerts.AlertsResponse, error)
+	GetSingleAlert(token, orgId, envId, alertId string) (*alerts.Response, error)
 	PutSingleAlert(token, orgId, envId, alertId string, body []byte) (*alerts.AlertsResponse, error)
 	PostAlert(token, orgId, envId string, body []byte) (*alerts.AlertsResponse, error)
 	DeleteSingleAlert(token, orgId, envId, alertId string) error

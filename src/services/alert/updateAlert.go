@@ -2,21 +2,19 @@ package alert
 
 import (
 	"errors"
+	"fmt"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert/requests"
 )
 
-func (t DefaultService) UpdateAlert(token, orgId, envId, product, alertId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+func (t DefaultService) UpdateAlert(token, orgId, envId, product, alertId string, request requests.AlertRequest) (*[]alerts.Response, error) {
 
-	if product == HYBRID_PRODUCT {
+	datasource, ok := t.datasources[product]
 
-		return t.hybridService.UpdateSingleAlert(token, orgId, envId, alertId, request)
+	if !ok {
+		// TODO: Implement this
+		return nil, errors.New(fmt.Sprintf("Alerts not supported for product '%s'", product))
 	}
 
-	if product == CLOUDHUB_PRODUCT {
-
-		return t.cloudhubService.UpdateAlert(token, orgId, envId, alertId, request)
-	}
-
-	return nil, errors.New("//TODO: Implement this")
+	return datasource.UpdateAlert(token, orgId, envId, alertId, request)
 }

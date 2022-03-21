@@ -12,7 +12,7 @@ import (
 	"github.com/google/wire"
 )
 
-func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (applications.ApplicationDatasource, error) {
+func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfigClient) (applications.Datasource, error) {
 
 	wire.Build(
 		hybridHttpClient.NewDefaultHttpClient,
@@ -20,7 +20,7 @@ func InitializeHybridApplicationDatasource(hybridConfigClient config.HybridConfi
 		hybrid.NewDatasource,
 		wire.Bind(new(hybridHttpClient.HttpClient), new(hybridHttpClient.DefaultHttpClient)),
 		wire.Bind(new(hybridService.Service), new(hybridService.DefaultService)),
-		wire.Bind(new(applications.ApplicationDatasource), new(hybrid.Datasource)),
+		wire.Bind(new(applications.Datasource), new(hybrid.Datasource)),
 	)
 
 	return hybrid.Datasource{}, nil

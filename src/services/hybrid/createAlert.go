@@ -6,7 +6,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert/requests"
 )
 
-func (t DefaultService) CreateAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.AlertResponse, error) {
+func (t DefaultService) CreateAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.Response, error) {
 
 	body, err := json.Marshal(request)
 

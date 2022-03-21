@@ -10,7 +10,7 @@ import (
 	"github.com/google/wire"
 )
 
-func InitializeTargetController(datasources []targets.Datasource) (targetController.Controller, error) {
+func InitializeTargetController(datasources map[string]targets.Datasource) (targetController.Controller, error) {
 
 	wire.Build(
 		targetService.NewDefaultService,

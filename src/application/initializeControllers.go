@@ -27,7 +27,7 @@ func (t *App) initializeControllers() {
 		panic("Error: Server Controller dependency injection failed")
 	}
 
-	t.alertController, err = wires.InitializeAlertController(hybridClientConfig, cloudhubClientConfig)
+	t.alertController, err = wires.InitializeAlertController(t.alertDatasources)
 
 	if err != nil {
 		panic("Error: Alert Controller dependency injection failed")

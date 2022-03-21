@@ -1,6 +1,8 @@
 package application
 
-import "github.com/aljrubior/amc-ui-rest-facade/wires"
+import (
+	"github.com/aljrubior/amc-ui-rest-facade/wires"
+)
 
 func (t *App) initializePermissionDatasource() {
 

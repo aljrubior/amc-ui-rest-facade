@@ -1,5 +1,5 @@
 package alerts
 
 type SingleAlertResponse struct {
-	Data AlertResponse `json:"data"`
+	Data Response `json:"data"`
 }

@@ -9,18 +9,24 @@ import (
 
 func NewGetAlertsRequest(
 	config *config.CloudhubConfigClient,
-	bearerToken string) *GetAlertsRequest {
+	bearerToken,
+	orgId,
+	envId string) *GetAlertsRequest {
 
 	return &GetAlertsRequest{
 		config:      config,
 		bearerToken: bearerToken,
+		orgId:       orgId,
+		envId:       envId,
 	}
 }
 
 type GetAlertsRequest struct {
 	clients.BaseHttpRequest
-	config      *config.CloudhubConfigClient
-	bearerToken string
+	config *config.CloudhubConfigClient
+	bearerToken,
+	orgId,
+	envId string
 }
 
 func (t *GetAlertsRequest) buildUri() string {

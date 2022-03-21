@@ -8,6 +8,7 @@ import (
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/server"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/target"
 	"github.com/aljrubior/amc-ui-rest-facade/controllers/user"
+	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions"
 	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
@@ -34,17 +35,24 @@ type App struct {
 	permissionController  permission.Controller
 	userController        user.Controller
 
-	applicationDatasources []applications.ApplicationDatasource
-	targetDatasources      []targets.Datasource
+	applicationDatasources map[string]applications.Datasource
+	targetDatasources      map[string]targets.Datasource
+	alertDatasources       map[string]alerts.Datasource
 	permissionDatasource   permissions.Datasource
 }
 
 func (t *App) Initialize() {
 
+	// Configurations
 	t.initializeConfigClient()
+
+	// Datasources
 	t.initializeApplicationDatasources()
 	t.initializeTargetDatasources()
 	t.initializePermissionDatasource()
+	t.initializeAlertDatasources()
+
+	// Controllers
 	t.initializeControllers()
 	t.healthController = health.NewDefaultController()
 	t.initializeRoutes()

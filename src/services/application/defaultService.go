@@ -11,7 +11,7 @@ var (
 	instance *DefaultService
 )
 
-func NewDefaultService(datasources []applications.ApplicationDatasource) DefaultService {
+func NewDefaultService(datasources map[string]applications.Datasource) DefaultService {
 
 	lock.Lock()
 	defer lock.Unlock()
@@ -26,5 +26,5 @@ func NewDefaultService(datasources []applications.ApplicationDatasource) Default
 }
 
 type DefaultService struct {
-	datasources []applications.ApplicationDatasource
+	datasources map[string]applications.Datasource
 }

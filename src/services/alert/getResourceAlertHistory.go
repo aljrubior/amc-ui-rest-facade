@@ -2,20 +2,18 @@ package alert
 
 import (
 	"errors"
+	"fmt"
 	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
 )
 
 func (t DefaultService) GetResourceAlertHistory(token, orgId, envId, product, resourceId string) (*[]alerts.ResourceAlertHistory, error) {
 
-	if product == HYBRID_PRODUCT {
+	datasource, ok := t.datasources[product]
 
-		return t.hybridService.GetResourceAlertHistory(token, orgId, envId, resourceId)
+	if !ok {
+		// TODO: Implement this
+		return nil, errors.New(fmt.Sprintf("Alerts not supported for product '%s'", product))
 	}
 
-	if product == CLOUDHUB_PRODUCT {
-
-		return nil, errors.New("//TODO: Not Implemented")
-	}
-
-	return nil, errors.New("//TODO: Implement this")
+	return datasource.GetResourceAlertHistory(token, orgId, envId, resourceId)
 }
