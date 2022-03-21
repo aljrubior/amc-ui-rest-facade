@@ -1,6 +1,6 @@
 package formatters
 
-import "github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement/model"
+import "github.com/aljrubior/go-facade/datasources/permissions/accessManagement/model"
 
 func (t DefaultFormatter) createPermissions(resource string) model.Permission {
 

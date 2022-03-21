@@ -1,7 +1,7 @@
 package formatters
 
 import (
-	model2 "github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric/model"
+	model2 "github.com/aljrubior/go-facade/datasources/applications/fabric/model"
 )
 
 func (t ResponseFormatter) Format() *[]model2.Deployment {

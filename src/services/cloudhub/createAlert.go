@@ -2,8 +2,8 @@ package cloudhub
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert/requests"
+	"github.com/aljrubior/go-facade/clients/responses/alerts"
+	"github.com/aljrubior/go-facade/controllers/alert/requests"
 )
 
 func (t DefaultService) CreateAlert(token, orgId, envId string, request requests.AlertRequest) (*[]alerts.Response, error) {

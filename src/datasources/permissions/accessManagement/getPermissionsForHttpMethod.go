@@ -1,8 +1,8 @@
 package accessManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/responses"
-	"github.com/aljrubior/amc-ui-rest-facade/errors"
+	"github.com/aljrubior/go-facade/clients/accessManagement/responses"
+	"github.com/aljrubior/go-facade/errors"
 )
 
 func (t DefaultDatasource) GetPermissionsForHttpMethod(token, orgId, envId, httpMethod string) *responses.AuthorizeResponse {

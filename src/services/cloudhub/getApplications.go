@@ -1,6 +1,6 @@
 package cloudhub
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/responses"
+import "github.com/aljrubior/go-facade/clients/cloudhub/responses"
 
 func (t DefaultService) GetApplications(token, org, envId string) (*[]responses.ApplicationResponse, error) {
 

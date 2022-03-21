@@ -1,7 +1,7 @@
 package cloudhub
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/requests"
+	"github.com/aljrubior/go-facade/clients/cloudhub/requests"
 	"net/http"
 	"time"
 )

@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
-	responses2 "github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement/responses"
+	"github.com/aljrubior/go-facade/clients/fabric/responses"
+	responses2 "github.com/aljrubior/go-facade/clients/runtimeFabricManagement/responses"
 	"strings"
 )
 

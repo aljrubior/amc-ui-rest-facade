@@ -2,8 +2,8 @@ package atlas
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/atlas/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/atlas/responses/target"
+	"github.com/aljrubior/go-facade/clients/atlas/requests"
+	"github.com/aljrubior/go-facade/clients/atlas/responses/target"
 	"io/ioutil"
 	"net/http"
 	"time"

@@ -1,6 +1,6 @@
 package transformers
 
-import "github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid/model"
+import "github.com/aljrubior/go-facade/datasources/targets/hybrid/model"
 
 func NewDefaultTransformer(applications *[]model.Target) *DefaultTransformer {
 	return &DefaultTransformer{

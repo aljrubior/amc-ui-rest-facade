@@ -2,8 +2,8 @@ package fabric
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
+	"github.com/aljrubior/go-facade/clients/fabric/requests"
+	"github.com/aljrubior/go-facade/clients/fabric/responses"
 	"io/ioutil"
 	"net/http"
 	"time"

@@ -1,9 +1,9 @@
 package transformers
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/responses"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets/cloudhub/model"
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/target"
+	"github.com/aljrubior/go-facade/clients/cloudhub/responses"
+	"github.com/aljrubior/go-facade/datasources/targets/cloudhub/model"
+	"github.com/aljrubior/go-facade/model/responses/target"
 )
 
 func NewDefaultTransformer(applications *[]responses.ApplicationResponse) *DefaultTransformer {

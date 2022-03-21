@@ -1,7 +1,7 @@
 package runtimeFabricManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement"
+	"github.com/aljrubior/go-facade/clients/runtimeFabricManagement"
 	"sync"
 )
 

@@ -1,8 +1,8 @@
 package application
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
+	"github.com/aljrubior/go-facade/config"
+	"github.com/aljrubior/go-facade/datasources/targets"
 )
 
 var (

@@ -1,7 +1,7 @@
 package application
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
+	"github.com/aljrubior/go-facade/model/responses/application"
 )
 
 func (t DefaultService) GetApplications(token, orgId, envId string) (*application.DataResponse, error) {

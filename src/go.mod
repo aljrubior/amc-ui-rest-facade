@@ -1,4 +1,4 @@
-module github.com/aljrubior/amc-ui-rest-facade
+module github.com/aljrubior/go-facade
 
 go 1.17
 

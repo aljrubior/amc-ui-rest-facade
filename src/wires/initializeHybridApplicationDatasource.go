@@ -4,11 +4,11 @@
 package wires
 
 import (
-	hybridHttpClient "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
-	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid"
-	hybridService "github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
+	hybridHttpClient "github.com/aljrubior/go-facade/clients/hybrid"
+	"github.com/aljrubior/go-facade/config"
+	"github.com/aljrubior/go-facade/datasources/applications"
+	"github.com/aljrubior/go-facade/datasources/applications/hybrid"
+	hybridService "github.com/aljrubior/go-facade/services/hybrid"
 	"github.com/google/wire"
 )
 

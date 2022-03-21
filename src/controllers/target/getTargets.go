@@ -2,7 +2,7 @@ package target
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/headers"
+	"github.com/aljrubior/go-facade/controllers/headers"
 	"log"
 	"net/http"
 )

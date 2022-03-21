@@ -1,7 +1,7 @@
 package formatters
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid/model"
+	"github.com/aljrubior/go-facade/datasources/applications/hybrid/model"
 )
 
 func (t ResponseFormatter) Format() *[]model.Application {

@@ -1,6 +1,6 @@
 package formatters
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
+import "github.com/aljrubior/go-facade/clients/hybrid/responses"
 
 func NewResponseFormatter(response *[]responses.ApplicationResponse) ResponseFormatter {
 

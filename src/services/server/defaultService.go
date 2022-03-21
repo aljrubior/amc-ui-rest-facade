@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
+	"github.com/aljrubior/go-facade/datasources/targets"
 	"sync"
 )
 

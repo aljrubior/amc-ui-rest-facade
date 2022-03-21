@@ -4,11 +4,11 @@
 package wires
 
 import (
-	cloudhubHttpClient "github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub"
-	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
-	cloudhubAlertDatasource "github.com/aljrubior/amc-ui-rest-facade/datasources/alerts/cloudhub"
-	cloudhubService "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
+	cloudhubHttpClient "github.com/aljrubior/go-facade/clients/cloudhub"
+	"github.com/aljrubior/go-facade/config"
+	"github.com/aljrubior/go-facade/datasources/alerts"
+	cloudhubAlertDatasource "github.com/aljrubior/go-facade/datasources/alerts/cloudhub"
+	cloudhubService "github.com/aljrubior/go-facade/services/cloudhub"
 	"github.com/google/wire"
 )
 

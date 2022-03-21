@@ -1,6 +1,6 @@
 package formatters
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/responses"
+import "github.com/aljrubior/go-facade/clients/accessManagement/responses"
 
 func NewDefaultFormatter(response *map[string]*responses.AuthorizeResponse) DefaultFormatter {
 

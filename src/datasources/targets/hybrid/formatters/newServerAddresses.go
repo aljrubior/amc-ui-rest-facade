@@ -1,8 +1,8 @@
 package formatters
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/common"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid/model"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses/common"
+	"github.com/aljrubior/go-facade/datasources/targets/hybrid/model"
 )
 
 func (t ResponseFormatter) newServerAddresses(server common.Server) []model.Address {

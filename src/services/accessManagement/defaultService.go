@@ -1,7 +1,7 @@
 package accessManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement"
+	"github.com/aljrubior/go-facade/clients/accessManagement"
 	"sync"
 )
 

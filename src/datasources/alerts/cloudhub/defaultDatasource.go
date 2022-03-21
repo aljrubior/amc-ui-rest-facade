@@ -1,6 +1,6 @@
 package cloudhub
 
-import "github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
+import "github.com/aljrubior/go-facade/services/cloudhub"
 
 func NewDefaultDatasource(cloudhubService cloudhub.Service) DefaultDatasource {
 	return DefaultDatasource{

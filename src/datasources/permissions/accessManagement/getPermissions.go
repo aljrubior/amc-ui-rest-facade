@@ -1,10 +1,10 @@
 package accessManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/responses"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement/formatters"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement/transformers"
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/permission"
+	"github.com/aljrubior/go-facade/clients/accessManagement/responses"
+	"github.com/aljrubior/go-facade/datasources/permissions/accessManagement/formatters"
+	"github.com/aljrubior/go-facade/datasources/permissions/accessManagement/transformers"
+	"github.com/aljrubior/go-facade/model/responses/permission"
 	"net/http"
 )
 

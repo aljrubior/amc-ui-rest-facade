@@ -1,6 +1,6 @@
 package application
 
-import "github.com/aljrubior/amc-ui-rest-facade/config"
+import "github.com/aljrubior/go-facade/config"
 
 func (t *App) initializeConfigClient() {
 

@@ -2,8 +2,8 @@ package accessManagement
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/responses"
+	"github.com/aljrubior/go-facade/clients/accessManagement/requests"
+	"github.com/aljrubior/go-facade/clients/accessManagement/responses"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -22,7 +22,7 @@ func (client DefaultHttpClient) PostAuthorize(token, orgId, envId string, body [
 	if err != nil {
 		return nil, err
 	}
-	
+
 	if resp.StatusCode != 200 {
 		return nil, client.ThrowError(resp)
 	}

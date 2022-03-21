@@ -1,9 +1,9 @@
 package hybrid
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid/formatters"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/hybrid/transformers"
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
+	"github.com/aljrubior/go-facade/datasources/applications/hybrid/formatters"
+	"github.com/aljrubior/go-facade/datasources/applications/hybrid/transformers"
+	"github.com/aljrubior/go-facade/model/responses/application"
 )
 
 func (t Datasource) GetApplications(token, orgId, envId string) (*[]application.Response, error) {

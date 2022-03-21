@@ -2,8 +2,8 @@ package hybrid
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/cluster"
+	"github.com/aljrubior/go-facade/clients/hybrid/requests"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses/cluster"
 	"io/ioutil"
 	"net/http"
 	"time"

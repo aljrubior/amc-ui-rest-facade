@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"github.com/aljrubior/amc-ui-rest-facade/utils/getenvs"
+	"github.com/aljrubior/go-facade/utils/getenvs"
 )
 
 func NewFabricConfigClient() FabricConfigClient {

@@ -1,7 +1,7 @@
 package hybrid
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/services/hybrid"
+	"github.com/aljrubior/go-facade/services/hybrid"
 )
 
 func NewDatasource(hybridService hybrid.Service) Datasource {

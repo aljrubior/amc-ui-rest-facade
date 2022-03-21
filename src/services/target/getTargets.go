@@ -1,7 +1,7 @@
 package target
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/target"
+	"github.com/aljrubior/go-facade/model/responses/target"
 )
 
 func (t DefaultService) GetTargets(token, orgId, envId string) (*target.DataResponse, error) {

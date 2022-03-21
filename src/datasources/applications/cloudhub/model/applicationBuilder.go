@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/responses"
+	"github.com/aljrubior/go-facade/clients/cloudhub/responses"
 )
 
 const (

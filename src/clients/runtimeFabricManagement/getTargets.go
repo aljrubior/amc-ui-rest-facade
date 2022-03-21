@@ -2,8 +2,8 @@ package runtimeFabricManagement
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement/responses"
+	"github.com/aljrubior/go-facade/clients/runtimeFabricManagement/requests"
+	"github.com/aljrubior/go-facade/clients/runtimeFabricManagement/responses"
 	"io/ioutil"
 	"net/http"
 	"time"

@@ -1,7 +1,7 @@
 package transformers
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub/model"
+	"github.com/aljrubior/go-facade/datasources/applications/cloudhub/model"
 )
 
 func NewDefaultTransformer(response *[]model.Application) *DefaultTransformer {

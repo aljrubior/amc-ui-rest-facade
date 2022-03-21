@@ -4,10 +4,10 @@
 package wires
 
 import (
-	coreServiceClient "github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement"
-	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/user"
-	"github.com/aljrubior/amc-ui-rest-facade/services/accessManagement"
+	coreServiceClient "github.com/aljrubior/go-facade/clients/accessManagement"
+	"github.com/aljrubior/go-facade/config"
+	"github.com/aljrubior/go-facade/controllers/user"
+	"github.com/aljrubior/go-facade/services/accessManagement"
 	"github.com/google/wire"
 )
 

@@ -4,11 +4,11 @@
 package wires
 
 import (
-	accessManagementClient "github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement"
-	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions"
-	accessManagementDatasource "github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement"
-	"github.com/aljrubior/amc-ui-rest-facade/services/accessManagement"
+	accessManagementClient "github.com/aljrubior/go-facade/clients/accessManagement"
+	"github.com/aljrubior/go-facade/config"
+	"github.com/aljrubior/go-facade/datasources/permissions"
+	accessManagementDatasource "github.com/aljrubior/go-facade/datasources/permissions/accessManagement"
+	"github.com/aljrubior/go-facade/services/accessManagement"
 	"github.com/google/wire"
 )
 

@@ -1,7 +1,7 @@
 package cloudhub
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/services/cloudhub"
+	"github.com/aljrubior/go-facade/services/cloudhub"
 )
 
 func NewDatasource(cloudhubService cloudhub.Service) Datasource {

@@ -1,7 +1,7 @@
 package hybrid
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/requests"
+	"github.com/aljrubior/go-facade/clients/hybrid/requests"
 	"net/http"
 	"time"
 )

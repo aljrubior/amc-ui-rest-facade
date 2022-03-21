@@ -4,9 +4,9 @@
 package wires
 
 import (
-	targetController "github.com/aljrubior/amc-ui-rest-facade/controllers/target"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets"
-	targetService "github.com/aljrubior/amc-ui-rest-facade/services/target"
+	targetController "github.com/aljrubior/go-facade/controllers/target"
+	"github.com/aljrubior/go-facade/datasources/targets"
+	targetService "github.com/aljrubior/go-facade/services/target"
 	"github.com/google/wire"
 )
 

@@ -1,6 +1,6 @@
 package main
 
-import "github.com/aljrubior/amc-ui-rest-facade/application"
+import "github.com/aljrubior/go-facade/application"
 
 func main() {
 	app := application.NewApp()

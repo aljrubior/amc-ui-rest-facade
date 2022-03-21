@@ -1,8 +1,8 @@
 package fabric
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients"
-	"github.com/aljrubior/amc-ui-rest-facade/config"
+	"github.com/aljrubior/go-facade/clients"
+	"github.com/aljrubior/go-facade/config"
 	"sync"
 )
 

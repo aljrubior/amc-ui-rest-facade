@@ -4,9 +4,9 @@
 package wires
 
 import (
-	alertController "github.com/aljrubior/amc-ui-rest-facade/controllers/alert"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
-	"github.com/aljrubior/amc-ui-rest-facade/services/alert"
+	alertController "github.com/aljrubior/go-facade/controllers/alert"
+	"github.com/aljrubior/go-facade/datasources/alerts"
+	"github.com/aljrubior/go-facade/services/alert"
 	"github.com/google/wire"
 )
 

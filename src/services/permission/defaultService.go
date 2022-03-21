@@ -1,7 +1,7 @@
 package permission
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions"
+	"github.com/aljrubior/go-facade/datasources/permissions"
 	"sync"
 )
 

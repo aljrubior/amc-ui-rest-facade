@@ -4,9 +4,9 @@
 package wires
 
 import (
-	permissionController "github.com/aljrubior/amc-ui-rest-facade/controllers/permission"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions"
-	"github.com/aljrubior/amc-ui-rest-facade/services/permission"
+	permissionController "github.com/aljrubior/go-facade/controllers/permission"
+	"github.com/aljrubior/go-facade/datasources/permissions"
+	"github.com/aljrubior/go-facade/services/permission"
 	"github.com/google/wire"
 )
 

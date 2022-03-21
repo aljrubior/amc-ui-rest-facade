@@ -1,7 +1,7 @@
 package permission
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/permission"
+	"github.com/aljrubior/go-facade/model/responses/permission"
 )
 
 func (t DefaultService) GetPermissions(token, orgId, envId string) (*permission.DataResponse, error) {

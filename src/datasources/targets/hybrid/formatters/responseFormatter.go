@@ -1,10 +1,10 @@
 package formatters
 
 import (
-	responses3 "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/cluster"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/server"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/serverGroup"
+	responses3 "github.com/aljrubior/go-facade/clients/hybrid/responses"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses/cluster"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses/server"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses/serverGroup"
 )
 
 func NewResponseFormatter(

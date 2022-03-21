@@ -1,7 +1,7 @@
 package transformers
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/model/responses/application"
+	"github.com/aljrubior/go-facade/model/responses/application"
 )
 
 func (t *DefaultTransformer) Transform() *[]application.Response {

@@ -1,6 +1,6 @@
 package hybrid
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/cluster"
+import "github.com/aljrubior/go-facade/clients/hybrid/responses/cluster"
 
 func (t DefaultService) GetClusters(token, orgId, envId string) (*[]cluster.Response, error) {
 

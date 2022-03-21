@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/common"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses"
+	"github.com/aljrubior/go-facade/clients/hybrid/responses/common"
 )
 
 func NewApplicationBuilder(response *[]responses.ApplicationResponse) ApplicationBuilder {

@@ -1,7 +1,7 @@
 package accessManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/responses"
+	"github.com/aljrubior/go-facade/clients/accessManagement/responses"
 )
 
 func (t DefaultService) GetMembers(token, orgId, envId string) (*[]responses.MemberResponse, error) {

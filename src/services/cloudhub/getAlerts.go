@@ -1,6 +1,6 @@
 package cloudhub
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
+import "github.com/aljrubior/go-facade/clients/responses/alerts"
 
 func (t DefaultService) GetAlerts(token, orgId, envId string) (*[]alerts.Response, error) {
 

@@ -1,7 +1,7 @@
 package target
 
 import (
-	targetService "github.com/aljrubior/amc-ui-rest-facade/services/target"
+	targetService "github.com/aljrubior/go-facade/services/target"
 	"sync"
 )
 

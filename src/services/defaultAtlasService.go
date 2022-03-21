@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/atlas"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/atlas/responses/target"
+	"github.com/aljrubior/go-facade/clients/atlas"
+	"github.com/aljrubior/go-facade/clients/atlas/responses/target"
 )
 
 func NewDefaultAtlasService(httpClient atlas.HttpClient) DefaultAtlasService {

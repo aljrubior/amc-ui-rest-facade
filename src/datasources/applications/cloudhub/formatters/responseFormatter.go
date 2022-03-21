@@ -1,6 +1,6 @@
 package formatters
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub/responses"
+import "github.com/aljrubior/go-facade/clients/cloudhub/responses"
 
 func NewResponseFormatter(response *[]responses.ApplicationResponse) ResponseFormatter {
 

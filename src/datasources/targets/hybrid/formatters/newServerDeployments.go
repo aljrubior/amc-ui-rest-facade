@@ -1,7 +1,7 @@
 package formatters
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/targets/hybrid/model"
+	"github.com/aljrubior/go-facade/datasources/targets/hybrid/model"
 )
 
 func (t ResponseFormatter) newServerDeployments(serverId int) []model.Deployment {

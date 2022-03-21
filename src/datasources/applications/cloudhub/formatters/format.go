@@ -1,7 +1,7 @@
 package formatters
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/cloudhub/model"
+	"github.com/aljrubior/go-facade/datasources/applications/cloudhub/model"
 )
 
 func (t ResponseFormatter) Format() *[]model.Application {

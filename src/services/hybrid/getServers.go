@@ -1,6 +1,6 @@
 package hybrid
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/server"
+import "github.com/aljrubior/go-facade/clients/hybrid/responses/server"
 
 func (t DefaultService) GetServers(token, orgId, envId string) (*[]server.Response, error) {
 

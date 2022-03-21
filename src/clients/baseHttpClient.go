@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	errors2 "github.com/aljrubior/amc-ui-rest-facade/errors"
+	errors2 "github.com/aljrubior/go-facade/errors"
 	"io/ioutil"
 	"net/http"
 )

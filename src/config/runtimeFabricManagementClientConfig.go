@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/utils/getenvs"
+	"github.com/aljrubior/go-facade/utils/getenvs"
 )
 
 func NewRuntimeFabricManagementClientConfig() RuntimeFabricManagementClientConfig {

@@ -3,7 +3,7 @@ package alert
 import (
 	"errors"
 	"fmt"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/responses/alerts"
+	"github.com/aljrubior/go-facade/clients/responses/alerts"
 )
 
 func (t DefaultService) GetSingleAlert(token, orgId, envId, product, alertId string) (*alerts.Response, error) {

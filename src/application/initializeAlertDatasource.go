@@ -1,8 +1,8 @@
 package application
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
-	"github.com/aljrubior/amc-ui-rest-facade/wires"
+	"github.com/aljrubior/go-facade/datasources/alerts"
+	"github.com/aljrubior/go-facade/wires"
 )
 
 func (t *App) initializeAlertDatasources() {

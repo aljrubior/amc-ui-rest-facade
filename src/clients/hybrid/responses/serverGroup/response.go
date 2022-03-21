@@ -1,6 +1,6 @@
 package serverGroup
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/hybrid/responses/common"
+import "github.com/aljrubior/go-facade/clients/hybrid/responses/common"
 
 type Response struct {
 	Id          int             `json:"id"`

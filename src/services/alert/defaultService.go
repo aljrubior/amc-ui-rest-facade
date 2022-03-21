@@ -1,7 +1,7 @@
 package alert
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/alerts"
+	"github.com/aljrubior/go-facade/datasources/alerts"
 	"sync"
 )
 

@@ -1,6 +1,6 @@
 package fabric
 
-import "github.com/aljrubior/amc-ui-rest-facade/clients/fabric/responses"
+import "github.com/aljrubior/go-facade/clients/fabric/responses"
 
 func (t DefaultService) GetDeployments(token, orgId, envId string) (*[]responses.DeploymentResponse, error) {
 

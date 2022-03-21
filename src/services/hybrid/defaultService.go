@@ -1,7 +1,7 @@
 package hybrid
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/hybrid"
+	"github.com/aljrubior/go-facade/clients/hybrid"
 	"sync"
 )
 

@@ -4,13 +4,13 @@
 package wires
 
 import (
-	fabricHttpClient "github.com/aljrubior/amc-ui-rest-facade/clients/fabric"
-	"github.com/aljrubior/amc-ui-rest-facade/clients/runtimeFabricManagement"
-	"github.com/aljrubior/amc-ui-rest-facade/config"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/applications/fabric"
-	fabricService "github.com/aljrubior/amc-ui-rest-facade/services/fabric"
-	runtimeFabricManagementService "github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
+	fabricHttpClient "github.com/aljrubior/go-facade/clients/fabric"
+	"github.com/aljrubior/go-facade/clients/runtimeFabricManagement"
+	"github.com/aljrubior/go-facade/config"
+	"github.com/aljrubior/go-facade/datasources/applications"
+	"github.com/aljrubior/go-facade/datasources/applications/fabric"
+	fabricService "github.com/aljrubior/go-facade/services/fabric"
+	runtimeFabricManagementService "github.com/aljrubior/go-facade/services/runtimeFabricManagement"
 	"github.com/google/wire"
 )
 

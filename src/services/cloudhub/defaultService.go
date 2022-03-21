@@ -1,7 +1,7 @@
 package cloudhub
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/cloudhub"
+	"github.com/aljrubior/go-facade/clients/cloudhub"
 	"sync"
 )
 

@@ -2,8 +2,8 @@ package alert
 
 import (
 	"encoding/json"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/alert/requests"
-	"github.com/aljrubior/amc-ui-rest-facade/controllers/headers"
+	"github.com/aljrubior/go-facade/controllers/alert/requests"
+	"github.com/aljrubior/go-facade/controllers/headers"
 	"github.com/gorilla/mux"
 	"net/http"
 )

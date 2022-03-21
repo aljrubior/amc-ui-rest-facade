@@ -1,7 +1,7 @@
 package formatters
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement/model"
+	"github.com/aljrubior/go-facade/datasources/permissions/accessManagement/model"
 )
 
 func (t DefaultFormatter) Format() *model.Permissions {

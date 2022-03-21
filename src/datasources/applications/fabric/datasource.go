@@ -1,8 +1,8 @@
 package fabric
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/services/fabric"
-	"github.com/aljrubior/amc-ui-rest-facade/services/runtimeFabricManagement"
+	"github.com/aljrubior/go-facade/services/fabric"
+	"github.com/aljrubior/go-facade/services/runtimeFabricManagement"
 )
 
 func NewDatasource(

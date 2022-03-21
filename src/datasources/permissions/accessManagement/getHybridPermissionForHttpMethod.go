@@ -1,9 +1,9 @@
 package accessManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/clients/accessManagement/responses"
-	"github.com/aljrubior/amc-ui-rest-facade/datasources/permissions/accessManagement/model"
-	"github.com/aljrubior/amc-ui-rest-facade/services/accessManagement/requests"
+	"github.com/aljrubior/go-facade/clients/accessManagement/responses"
+	"github.com/aljrubior/go-facade/datasources/permissions/accessManagement/model"
+	"github.com/aljrubior/go-facade/services/accessManagement/requests"
 )
 
 func (t DefaultDatasource) GetHybridPermissionForHttpMethod(token, orgId, envId, httpMethod string) (*responses.AuthorizeResponse, error) {

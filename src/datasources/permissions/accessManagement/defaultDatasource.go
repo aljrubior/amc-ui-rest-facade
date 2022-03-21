@@ -1,7 +1,7 @@
 package accessManagement
 
 import (
-	"github.com/aljrubior/amc-ui-rest-facade/services/accessManagement"
+	"github.com/aljrubior/go-facade/services/accessManagement"
 )
 
 func NewDefaultDatasource(accessManagementService accessManagement.Service) DefaultDatasource {
